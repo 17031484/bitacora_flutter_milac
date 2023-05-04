@@ -289,7 +289,7 @@ class _FrenteExteriorState extends State<FrenteExterior> {
                                   ? 'No aplica'
                                   : 'Mal estado'));
                 }),
-              ),
+              ), SizedBox(height: 5,)
             ],
           ),
         ),
@@ -440,7 +440,7 @@ class _FrenteExteriorState extends State<FrenteExterior> {
                             ? 'No aplica'
                             : 'Mal estado'));
           }),
-        ),
+        ), SizedBox(height: 5,)
       ],
     );
   }

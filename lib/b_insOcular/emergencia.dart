@@ -137,7 +137,7 @@ class _EmergenciaState extends State<Emergencia> {
                             ? 'No aplica'
                             : 'Mal estado'));
           }),
-        ),
+        ),SizedBox(height: 10,),
         const ListTile(
           //Primera pregunta
           title: Text(
@@ -247,7 +247,7 @@ class _EmergenciaState extends State<Emergencia> {
                             ? 'No aplica'
                             : 'Mal estado'));
           }),
-        ),
+        ),SizedBox(height: 5,)
       ],
     );
   }

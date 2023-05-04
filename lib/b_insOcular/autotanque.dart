@@ -514,7 +514,7 @@ class _AutotanqueState extends State<Autotanque> {
                             ? 'No aplica'
                             : 'Mal estado'));
           }),
-        ),
+        ), SizedBox(height: 5,)
       ],
     );
   }

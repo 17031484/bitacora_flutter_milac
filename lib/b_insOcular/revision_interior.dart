@@ -324,7 +324,7 @@ class _RevisionInteriorState extends State<RevisionInterior> {
                             ? 'No aplica'
                             : 'Mal estado'));
           }),
-        ),
+        ), SizedBox(height: 5,)
       ],
     );
   }

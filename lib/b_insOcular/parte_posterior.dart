@@ -109,6 +109,11 @@ class _PartePosterioState extends State<PartePosterior> {
                                   : 'Mal estado'));
                 }),
               ),
+              const Divider(
+                thickness: 5,
+                indent: 10,
+                endIndent: 10,
+              ),
               const ListTile(
                 title: Text('DIRECCIONALES'),
               ),
@@ -288,7 +293,7 @@ class _PartePosterioState extends State<PartePosterior> {
                                   ? 'No aplica'
                                   : 'Mal estado'));
                 }),
-              ),
+              ),SizedBox(height: 5,)
             ],
           ),
         ),
@@ -508,7 +513,7 @@ class _PartePosterioState extends State<PartePosterior> {
                             ? 'No aplica'
                             : 'Mal estado'));
           }),
-        ),
+        ), SizedBox(height: 5,)
       ],
     );
   }

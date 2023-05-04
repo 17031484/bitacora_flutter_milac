@@ -215,7 +215,7 @@ class _CInternaState extends State<CInterna> {
                             ? 'No aplica'
                             : 'Mal estado'));
           }),
-        ),
+        ), SizedBox(height: 5,)
       ],
     );
   }

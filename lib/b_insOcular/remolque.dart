@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import '../global.dart' as globals;
 import 'AppButtons.dart';
 
-enum Answers { buen_estado, no_aplica, mal_estado }
-
 class Remolque extends StatefulWidget {
   const Remolque({super.key});
 
@@ -12,21 +10,6 @@ class Remolque extends StatefulWidget {
 }
 
 class _RemolqueState extends State<Remolque> {
-  Answers? _value_82 = Answers.buen_estado;
-  Answers? _value_83 = Answers.buen_estado;
-  Answers? _value_84 = Answers.buen_estado;
-  Answers? _value_85 = Answers.buen_estado;
-  Answers? _value_86 = Answers.buen_estado;
-  Answers? _value_87 = Answers.buen_estado;
-  Answers? _value_88 = Answers.buen_estado;
-  Answers? _value_89 = Answers.buen_estado;
-  Answers? _value_90 = Answers.buen_estado;
-  Answers? _value_91 = Answers.buen_estado;
-  Answers? _value_92 = Answers.buen_estado;
-  Answers? _value_93 = Answers.buen_estado;
-  Answers? _value_94 = Answers.buen_estado;
-  Answers? _value_95 = Answers.buen_estado;
-  Answers? _value_96 = Answers.buen_estado;
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -70,7 +53,9 @@ class _RemolqueState extends State<Remolque> {
     return Padding(
       padding: const EdgeInsets.all(5.0),
       child: ElevatedButton(
-        onPressed: () {},
+        onPressed: () {
+          print(globals.selectedIndex);
+        },
         child: const Text('Guardar'),
       ),
     );
@@ -629,7 +614,7 @@ class _RemolqueState extends State<Remolque> {
                             ? 'No aplica'
                             : 'Mal estado'));
           }),
-        ),
+        ), SizedBox(height: 5,)
             ],
           ),
         ),

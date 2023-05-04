@@ -432,7 +432,7 @@ class _LadoIDState extends State<LadoID> {
                             ? 'No aplica'
                             : 'Mal estado'));
           }),
-        ),
+        ),SizedBox(height: 5,)
       ],
     );
   }
