@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '../navbar.dart';
-
-enum Answers { buen_estado, no_aplica, mal_estado }
+import 'package:test_app/b_insOcular/revision_interior.dart';
+import '../global.dart' as globals;
+import 'AppButtons.dart';
 
 class Autotanque extends StatefulWidget {
   const Autotanque({super.key});
@@ -11,32 +11,23 @@ class Autotanque extends StatefulWidget {
 }
 
 class _AutotanqueState extends State<Autotanque> {
-  Answers? _value_42 = Answers.buen_estado;
-  Answers? _value_43 = Answers.buen_estado;
-  Answers? _value_44 = Answers.buen_estado;
-  Answers? _value_45 = Answers.buen_estado;
-  Answers? _value_46 = Answers.buen_estado;
-  Answers? _value_47 = Answers.buen_estado;
-  Answers? _value_48 = Answers.buen_estado;
-  Answers? _value_49 = Answers.buen_estado;
-  Answers? _value_50 = Answers.buen_estado;
-  Answers? _value_51 = Answers.buen_estado;
-  Answers? _value_52 = Answers.buen_estado;
-  Answers? _value_53 = Answers.buen_estado;
-
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        home: Scaffold(
-      drawer: const NavBar(),
-      appBar: AppBar(
-        title: const Text('Autotanque'),
-        backgroundColor: Colors.blue,
-      ),
-      body: ListView(
-          padding: EdgeInsets.zero, children: <Widget>[buildContent()]),
-      bottomNavigationBar: buildfixedButton(),
-    ));
+    return WillPopScope(
+      onWillPop: () async {
+        return false;
+      },
+      child: MaterialApp(
+          home: Scaffold(
+        appBar: AppBar(
+          title: const Text('Autotanque'),
+          backgroundColor: Colors.blue,
+        ),
+        body: ListView(
+            padding: EdgeInsets.zero, children: <Widget>[buildContent()]),
+        bottomNavigationBar: buildfixedButton(),
+      )),
+    );
   }
 
   Widget buildContent() {
@@ -65,7 +56,11 @@ class _AutotanqueState extends State<Autotanque> {
     return Padding(
       padding: const EdgeInsets.all(5.0),
       child: ElevatedButton(
-        onPressed: () {},
+        onPressed: () {
+          print(globals.selectedIndex);
+          Navigator.of(context).push(
+              MaterialPageRoute(builder: (context) => RevisionInterior()));
+        },
         child: const Text('Guardar'),
       ),
     );
@@ -78,33 +73,35 @@ class _AutotanqueState extends State<Autotanque> {
           //Primera pregunta
           title: Text('MATA CHISPAS'),
         ),
-        RadioListTile<Answers>(
-            title: const Text('Buen estado'),
-            value: Answers.buen_estado,
-            groupValue: _value_42,
-            onChanged: (Answers? value) {
-              setState(() {
-                _value_42 = value;
-              });
-            }),
-        RadioListTile<Answers>(
-            title: const Text('No aplica'),
-            value: Answers.no_aplica,
-            groupValue: _value_42,
-            onChanged: (Answers? value) {
-              setState(() {
-                _value_42 = value;
-              });
-            }),
-        RadioListTile<Answers>(
-            title: const Text('Mal estado'),
-            value: Answers.mal_estado,
-            groupValue: _value_42,
-            onChanged: (Answers? value) {
-              setState(() {
-                _value_42 = value;
-              });
-            }),
+        Row(
+          mainAxisAlignment:
+              MainAxisAlignment.center, //Center Row contents horizontally,
+          crossAxisAlignment:
+              CrossAxisAlignment.center, //Center Row contents vertically,
+          children: List.generate(3, (index) {
+            return InkWell(
+                onTap: () {
+                  setState(() {
+                    globals.selectedIndex[41] = index;
+                  });
+                },
+                child: AppButtons(
+                    color: globals.selectedIndex[41] == index
+                        ? Colors.white
+                        : Colors.black,
+                    backgroundColor: globals.selectedIndex[41] == index
+                        ? Colors.black
+                        : Color.fromARGB(186, 239, 234, 234),
+                    borderColor: globals.selectedIndex[41] == index
+                        ? Colors.black
+                        : Color.fromARGB(186, 239, 234, 234),
+                    text: index == 0
+                        ? 'Buen estado'
+                        : index == 1
+                            ? 'No aplica'
+                            : 'Mal estado'));
+          }),
+        ),
         const Divider(
           thickness: 5,
           indent: 10,
@@ -114,64 +111,68 @@ class _AutotanqueState extends State<Autotanque> {
           //Segunda pregunta
           title: Text('PLACA METALICA DE IDENTIFICACION'),
         ),
-        RadioListTile<Answers>(
-            title: const Text('Buen estado'),
-            value: Answers.buen_estado,
-            groupValue: _value_43,
-            onChanged: (Answers? value) {
-              setState(() {
-                _value_43 = value;
-              });
-            }),
-        RadioListTile<Answers>(
-            title: const Text('No aplica'),
-            value: Answers.no_aplica,
-            groupValue: _value_43,
-            onChanged: (Answers? value) {
-              setState(() {
-                _value_43 = value;
-              });
-            }),
-        RadioListTile<Answers>(
-            title: const Text('Mal estado'),
-            value: Answers.mal_estado,
-            groupValue: _value_43,
-            onChanged: (Answers? value) {
-              setState(() {
-                _value_43 = value;
-              });
-            }),
+        Row(
+          mainAxisAlignment:
+              MainAxisAlignment.center, //Center Row contents horizontally,
+          crossAxisAlignment:
+              CrossAxisAlignment.center, //Center Row contents vertically,
+          children: List.generate(3, (index) {
+            return InkWell(
+                onTap: () {
+                  setState(() {
+                    globals.selectedIndex[42] = index;
+                  });
+                },
+                child: AppButtons(
+                    color: globals.selectedIndex[42] == index
+                        ? Colors.white
+                        : Colors.black,
+                    backgroundColor: globals.selectedIndex[42] == index
+                        ? Colors.black
+                        : Color.fromARGB(186, 239, 234, 234),
+                    borderColor: globals.selectedIndex[42] == index
+                        ? Colors.black
+                        : Color.fromARGB(186, 239, 234, 234),
+                    text: index == 0
+                        ? 'Buen estado'
+                        : index == 1
+                            ? 'No aplica'
+                            : 'Mal estado'));
+          }),
+        ),
         const ListTile(
           //Primera pregunta
           title: Text('ENGOMADOS DE PRUEBA VIGENTE'),
         ),
-        RadioListTile<Answers>(
-            title: const Text('Buen estado'),
-            value: Answers.buen_estado,
-            groupValue: _value_44,
-            onChanged: (Answers? value) {
-              setState(() {
-                _value_44 = value;
-              });
-            }),
-        RadioListTile<Answers>(
-            title: const Text('No aplica'),
-            value: Answers.no_aplica,
-            groupValue: _value_44,
-            onChanged: (Answers? value) {
-              setState(() {
-                _value_44 = value;
-              });
-            }),
-        RadioListTile<Answers>(
-            title: const Text('Mal estado'),
-            value: Answers.mal_estado,
-            groupValue: _value_44,
-            onChanged: (Answers? value) {
-              setState(() {
-                _value_44 = value;
-              });
-            }),
+        Row(
+          mainAxisAlignment:
+              MainAxisAlignment.center, //Center Row contents horizontally,
+          crossAxisAlignment:
+              CrossAxisAlignment.center, //Center Row contents vertically,
+          children: List.generate(3, (index) {
+            return InkWell(
+                onTap: () {
+                  setState(() {
+                    globals.selectedIndex[43] = index;
+                  });
+                },
+                child: AppButtons(
+                    color: globals.selectedIndex[43] == index
+                        ? Colors.white
+                        : Colors.black,
+                    backgroundColor: globals.selectedIndex[43] == index
+                        ? Colors.black
+                        : Color.fromARGB(186, 239, 234, 234),
+                    borderColor: globals.selectedIndex[43] == index
+                        ? Colors.black
+                        : Color.fromARGB(186, 239, 234, 234),
+                    text: index == 0
+                        ? 'Buen estado'
+                        : index == 1
+                            ? 'No aplica'
+                            : 'Mal estado'));
+          }),
+        ),
         const Divider(
           thickness: 5,
           indent: 10,
@@ -181,33 +182,35 @@ class _AutotanqueState extends State<Autotanque> {
           //Primera pregunta
           title: Text('REFLEJANTES'),
         ),
-        RadioListTile<Answers>(
-            title: const Text('Buen estado'),
-            value: Answers.buen_estado,
-            groupValue: _value_45,
-            onChanged: (Answers? value) {
-              setState(() {
-                _value_45 = value;
-              });
-            }),
-        RadioListTile<Answers>(
-            title: const Text('No aplica'),
-            value: Answers.no_aplica,
-            groupValue: _value_45,
-            onChanged: (Answers? value) {
-              setState(() {
-                _value_45 = value;
-              });
-            }),
-        RadioListTile<Answers>(
-            title: const Text('Mal estado'),
-            value: Answers.mal_estado,
-            groupValue: _value_45,
-            onChanged: (Answers? value) {
-              setState(() {
-                _value_45 = value;
-              });
-            }),
+        Row(
+          mainAxisAlignment:
+              MainAxisAlignment.center, //Center Row contents horizontally,
+          crossAxisAlignment:
+              CrossAxisAlignment.center, //Center Row contents vertically,
+          children: List.generate(3, (index) {
+            return InkWell(
+                onTap: () {
+                  setState(() {
+                    globals.selectedIndex[44] = index;
+                  });
+                },
+                child: AppButtons(
+                    color: globals.selectedIndex[44] == index
+                        ? Colors.white
+                        : Colors.black,
+                    backgroundColor: globals.selectedIndex[44] == index
+                        ? Colors.black
+                        : Color.fromARGB(186, 239, 234, 234),
+                    borderColor: globals.selectedIndex[44] == index
+                        ? Colors.black
+                        : Color.fromARGB(186, 239, 234, 234),
+                    text: index == 0
+                        ? 'Buen estado'
+                        : index == 1
+                            ? 'No aplica'
+                            : 'Mal estado'));
+          }),
+        ),
         const Divider(
           thickness: 5,
           indent: 10,
@@ -217,33 +220,35 @@ class _AutotanqueState extends State<Autotanque> {
           //Primera pregunta
           title: Text('TUBERIA, VALVULAS CONEXIONES'),
         ),
-        RadioListTile<Answers>(
-            title: const Text('Buen estado'),
-            value: Answers.buen_estado,
-            groupValue: _value_46,
-            onChanged: (Answers? value) {
-              setState(() {
-                _value_46 = value;
-              });
-            }),
-        RadioListTile<Answers>(
-            title: const Text('No aplica'),
-            value: Answers.no_aplica,
-            groupValue: _value_46,
-            onChanged: (Answers? value) {
-              setState(() {
-                _value_46 = value;
-              });
-            }),
-        RadioListTile<Answers>(
-            title: const Text('Mal estado'),
-            value: Answers.mal_estado,
-            groupValue: _value_46,
-            onChanged: (Answers? value) {
-              setState(() {
-                _value_46 = value;
-              });
-            }),
+        Row(
+          mainAxisAlignment:
+              MainAxisAlignment.center, //Center Row contents horizontally,
+          crossAxisAlignment:
+              CrossAxisAlignment.center, //Center Row contents vertically,
+          children: List.generate(3, (index) {
+            return InkWell(
+                onTap: () {
+                  setState(() {
+                    globals.selectedIndex[45] = index;
+                  });
+                },
+                child: AppButtons(
+                    color: globals.selectedIndex[45] == index
+                        ? Colors.white
+                        : Colors.black,
+                    backgroundColor: globals.selectedIndex[45] == index
+                        ? Colors.black
+                        : Color.fromARGB(186, 239, 234, 234),
+                    borderColor: globals.selectedIndex[45] == index
+                        ? Colors.black
+                        : Color.fromARGB(186, 239, 234, 234),
+                    text: index == 0
+                        ? 'Buen estado'
+                        : index == 1
+                            ? 'No aplica'
+                            : 'Mal estado'));
+          }),
+        ),
         const Divider(
           thickness: 5,
           indent: 10,
@@ -253,33 +258,35 @@ class _AutotanqueState extends State<Autotanque> {
           //Primera pregunta
           title: Text('ESCALERILLAS'),
         ),
-        RadioListTile<Answers>(
-            title: const Text('Buen estado'),
-            value: Answers.buen_estado,
-            groupValue: _value_47,
-            onChanged: (Answers? value) {
-              setState(() {
-                _value_47 = value;
-              });
-            }),
-        RadioListTile<Answers>(
-            title: const Text('No aplica'),
-            value: Answers.no_aplica,
-            groupValue: _value_47,
-            onChanged: (Answers? value) {
-              setState(() {
-                _value_47 = value;
-              });
-            }),
-        RadioListTile<Answers>(
-            title: const Text('Mal estado'),
-            value: Answers.mal_estado,
-            groupValue: _value_47,
-            onChanged: (Answers? value) {
-              setState(() {
-                _value_47 = value;
-              });
-            }),
+        Row(
+          mainAxisAlignment:
+              MainAxisAlignment.center, //Center Row contents horizontally,
+          crossAxisAlignment:
+              CrossAxisAlignment.center, //Center Row contents vertically,
+          children: List.generate(3, (index) {
+            return InkWell(
+                onTap: () {
+                  setState(() {
+                    globals.selectedIndex[46] = index;
+                  });
+                },
+                child: AppButtons(
+                    color: globals.selectedIndex[46] == index
+                        ? Colors.white
+                        : Colors.black,
+                    backgroundColor: globals.selectedIndex[46] == index
+                        ? Colors.black
+                        : Color.fromARGB(186, 239, 234, 234),
+                    borderColor: globals.selectedIndex[46] == index
+                        ? Colors.black
+                        : Color.fromARGB(186, 239, 234, 234),
+                    text: index == 0
+                        ? 'Buen estado'
+                        : index == 1
+                            ? 'No aplica'
+                            : 'Mal estado'));
+          }),
+        ),
         const Divider(
           thickness: 5,
           indent: 10,
@@ -289,33 +296,35 @@ class _AutotanqueState extends State<Autotanque> {
           //Primera pregunta
           title: Text('PASILLO'),
         ),
-        RadioListTile<Answers>(
-            title: const Text('Buen estado'),
-            value: Answers.buen_estado,
-            groupValue: _value_48,
-            onChanged: (Answers? value) {
-              setState(() {
-                _value_48 = value;
-              });
-            }),
-        RadioListTile<Answers>(
-            title: const Text('No aplica'),
-            value: Answers.no_aplica,
-            groupValue: _value_48,
-            onChanged: (Answers? value) {
-              setState(() {
-                _value_48 = value;
-              });
-            }),
-        RadioListTile<Answers>(
-            title: const Text('Mal estado'),
-            value: Answers.mal_estado,
-            groupValue: _value_48,
-            onChanged: (Answers? value) {
-              setState(() {
-                _value_48 = value;
-              });
-            }),
+        Row(
+          mainAxisAlignment:
+              MainAxisAlignment.center, //Center Row contents horizontally,
+          crossAxisAlignment:
+              CrossAxisAlignment.center, //Center Row contents vertically,
+          children: List.generate(3, (index) {
+            return InkWell(
+                onTap: () {
+                  setState(() {
+                    globals.selectedIndex[47] = index;
+                  });
+                },
+                child: AppButtons(
+                    color: globals.selectedIndex[47] == index
+                        ? Colors.white
+                        : Colors.black,
+                    backgroundColor: globals.selectedIndex[47] == index
+                        ? Colors.black
+                        : Color.fromARGB(186, 239, 234, 234),
+                    borderColor: globals.selectedIndex[47] == index
+                        ? Colors.black
+                        : Color.fromARGB(186, 239, 234, 234),
+                    text: index == 0
+                        ? 'Buen estado'
+                        : index == 1
+                            ? 'No aplica'
+                            : 'Mal estado'));
+          }),
+        ),
         const Divider(
           thickness: 5,
           indent: 10,
@@ -325,33 +334,35 @@ class _AutotanqueState extends State<Autotanque> {
           //Primera pregunta
           title: Text('CUERPO DEL TANQUE (SIN GOLPES, FISURAS O FUGAS)'),
         ),
-        RadioListTile<Answers>(
-            title: const Text('Buen estado'),
-            value: Answers.buen_estado,
-            groupValue: _value_49,
-            onChanged: (Answers? value) {
-              setState(() {
-                _value_49 = value;
-              });
-            }),
-        RadioListTile<Answers>(
-            title: const Text('No aplica'),
-            value: Answers.no_aplica,
-            groupValue: _value_49,
-            onChanged: (Answers? value) {
-              setState(() {
-                _value_49 = value;
-              });
-            }),
-        RadioListTile<Answers>(
-            title: const Text('Mal estado'),
-            value: Answers.mal_estado,
-            groupValue: _value_49,
-            onChanged: (Answers? value) {
-              setState(() {
-                _value_49 = value;
-              });
-            }),
+        Row(
+          mainAxisAlignment:
+              MainAxisAlignment.center, //Center Row contents horizontally,
+          crossAxisAlignment:
+              CrossAxisAlignment.center, //Center Row contents vertically,
+          children: List.generate(3, (index) {
+            return InkWell(
+                onTap: () {
+                  setState(() {
+                    globals.selectedIndex[48] = index;
+                  });
+                },
+                child: AppButtons(
+                    color: globals.selectedIndex[48] == index
+                        ? Colors.white
+                        : Colors.black,
+                    backgroundColor: globals.selectedIndex[48] == index
+                        ? Colors.black
+                        : Color.fromARGB(186, 239, 234, 234),
+                    borderColor: globals.selectedIndex[48] == index
+                        ? Colors.black
+                        : Color.fromARGB(186, 239, 234, 234),
+                    text: index == 0
+                        ? 'Buen estado'
+                        : index == 1
+                            ? 'No aplica'
+                            : 'Mal estado'));
+          }),
+        ),
         const Divider(
           thickness: 5,
           indent: 10,
@@ -361,33 +372,35 @@ class _AutotanqueState extends State<Autotanque> {
           //Primera pregunta
           title: Text('INSTRUMENTOS DE MEDICION'),
         ),
-        RadioListTile<Answers>(
-            title: const Text('Buen estado'),
-            value: Answers.buen_estado,
-            groupValue: _value_50,
-            onChanged: (Answers? value) {
-              setState(() {
-                _value_50 = value;
-              });
-            }),
-        RadioListTile<Answers>(
-            title: const Text('No aplica'),
-            value: Answers.no_aplica,
-            groupValue: _value_50,
-            onChanged: (Answers? value) {
-              setState(() {
-                _value_50 = value;
-              });
-            }),
-        RadioListTile<Answers>(
-            title: const Text('Mal estado'),
-            value: Answers.mal_estado,
-            groupValue: _value_50,
-            onChanged: (Answers? value) {
-              setState(() {
-                _value_50 = value;
-              });
-            }),
+        Row(
+          mainAxisAlignment:
+              MainAxisAlignment.center, //Center Row contents horizontally,
+          crossAxisAlignment:
+              CrossAxisAlignment.center, //Center Row contents vertically,
+          children: List.generate(3, (index) {
+            return InkWell(
+                onTap: () {
+                  setState(() {
+                    globals.selectedIndex[49] = index;
+                  });
+                },
+                child: AppButtons(
+                    color: globals.selectedIndex[49] == index
+                        ? Colors.white
+                        : Colors.black,
+                    backgroundColor: globals.selectedIndex[49] == index
+                        ? Colors.black
+                        : Color.fromARGB(186, 239, 234, 234),
+                    borderColor: globals.selectedIndex[49] == index
+                        ? Colors.black
+                        : Color.fromARGB(186, 239, 234, 234),
+                    text: index == 0
+                        ? 'Buen estado'
+                        : index == 1
+                            ? 'No aplica'
+                            : 'Mal estado'));
+          }),
+        ),
         const Divider(
           thickness: 5,
           indent: 10,
@@ -397,33 +410,35 @@ class _AutotanqueState extends State<Autotanque> {
           //Primera pregunta
           title: Text('VÁLVULA DE DESFOGE INTERNA Y DE VACIO'),
         ),
-        RadioListTile<Answers>(
-            title: const Text('Buen estado'),
-            value: Answers.buen_estado,
-            groupValue: _value_51,
-            onChanged: (Answers? value) {
-              setState(() {
-                _value_51 = value;
-              });
-            }),
-        RadioListTile<Answers>(
-            title: const Text('No aplica'),
-            value: Answers.no_aplica,
-            groupValue: _value_51,
-            onChanged: (Answers? value) {
-              setState(() {
-                _value_51 = value;
-              });
-            }),
-        RadioListTile<Answers>(
-            title: const Text('Mal estado'),
-            value: Answers.mal_estado,
-            groupValue: _value_51,
-            onChanged: (Answers? value) {
-              setState(() {
-                _value_51 = value;
-              });
-            }),
+        Row(
+          mainAxisAlignment:
+              MainAxisAlignment.center, //Center Row contents horizontally,
+          crossAxisAlignment:
+              CrossAxisAlignment.center, //Center Row contents vertically,
+          children: List.generate(3, (index) {
+            return InkWell(
+                onTap: () {
+                  setState(() {
+                    globals.selectedIndex[50] = index;
+                  });
+                },
+                child: AppButtons(
+                    color: globals.selectedIndex[50] == index
+                        ? Colors.white
+                        : Colors.black,
+                    backgroundColor: globals.selectedIndex[50] == index
+                        ? Colors.black
+                        : Color.fromARGB(186, 239, 234, 234),
+                    borderColor: globals.selectedIndex[50] == index
+                        ? Colors.black
+                        : Color.fromARGB(186, 239, 234, 234),
+                    text: index == 0
+                        ? 'Buen estado'
+                        : index == 1
+                            ? 'No aplica'
+                            : 'Mal estado'));
+          }),
+        ),
         const Divider(
           thickness: 5,
           indent: 10,
@@ -433,33 +448,35 @@ class _AutotanqueState extends State<Autotanque> {
           //Primera pregunta
           title: Text('ENTRADA PASA HOMBRE'),
         ),
-        RadioListTile<Answers>(
-            title: const Text('Buen estado'),
-            value: Answers.buen_estado,
-            groupValue: _value_52,
-            onChanged: (Answers? value) {
-              setState(() {
-                _value_52 = value;
-              });
-            }),
-        RadioListTile<Answers>(
-            title: const Text('No aplica'),
-            value: Answers.no_aplica,
-            groupValue: _value_52,
-            onChanged: (Answers? value) {
-              setState(() {
-                _value_52 = value;
-              });
-            }),
-        RadioListTile<Answers>(
-            title: const Text('Mal estado'),
-            value: Answers.mal_estado,
-            groupValue: _value_52,
-            onChanged: (Answers? value) {
-              setState(() {
-                _value_52 = value;
-              });
-            }),
+        Row(
+          mainAxisAlignment:
+              MainAxisAlignment.center, //Center Row contents horizontally,
+          crossAxisAlignment:
+              CrossAxisAlignment.center, //Center Row contents vertically,
+          children: List.generate(3, (index) {
+            return InkWell(
+                onTap: () {
+                  setState(() {
+                    globals.selectedIndex[51] = index;
+                  });
+                },
+                child: AppButtons(
+                    color: globals.selectedIndex[51] == index
+                        ? Colors.white
+                        : Colors.black,
+                    backgroundColor: globals.selectedIndex[51] == index
+                        ? Colors.black
+                        : Color.fromARGB(186, 239, 234, 234),
+                    borderColor: globals.selectedIndex[51] == index
+                        ? Colors.black
+                        : Color.fromARGB(186, 239, 234, 234),
+                    text: index == 0
+                        ? 'Buen estado'
+                        : index == 1
+                            ? 'No aplica'
+                            : 'Mal estado'));
+          }),
+        ),
         const Divider(
           thickness: 5,
           indent: 10,
@@ -469,33 +486,35 @@ class _AutotanqueState extends State<Autotanque> {
           //Primera pregunta
           title: Text('CONEXIÓN A TIERRA'),
         ),
-        RadioListTile<Answers>(
-            title: const Text('Buen estado'),
-            value: Answers.buen_estado,
-            groupValue: _value_53,
-            onChanged: (Answers? value) {
-              setState(() {
-                _value_53 = value;
-              });
-            }),
-        RadioListTile<Answers>(
-            title: const Text('No aplica'),
-            value: Answers.no_aplica,
-            groupValue: _value_53,
-            onChanged: (Answers? value) {
-              setState(() {
-                _value_53 = value;
-              });
-            }),
-        RadioListTile<Answers>(
-            title: const Text('Mal estado'),
-            value: Answers.mal_estado,
-            groupValue: _value_53,
-            onChanged: (Answers? value) {
-              setState(() {
-                _value_53 = value;
-              });
-            }),
+        Row(
+          mainAxisAlignment:
+              MainAxisAlignment.center, //Center Row contents horizontally,
+          crossAxisAlignment:
+              CrossAxisAlignment.center, //Center Row contents vertically,
+          children: List.generate(3, (index) {
+            return InkWell(
+                onTap: () {
+                  setState(() {
+                    globals.selectedIndex[52] = index;
+                  });
+                },
+                child: AppButtons(
+                    color: globals.selectedIndex[52] == index
+                        ? Colors.white
+                        : Colors.black,
+                    backgroundColor: globals.selectedIndex[52] == index
+                        ? Colors.black
+                        : Color.fromARGB(186, 239, 234, 234),
+                    borderColor: globals.selectedIndex[52] == index
+                        ? Colors.black
+                        : Color.fromARGB(186, 239, 234, 234),
+                    text: index == 0
+                        ? 'Buen estado'
+                        : index == 1
+                            ? 'No aplica'
+                            : 'Mal estado'));
+          }),
+        ),
       ],
     );
   }

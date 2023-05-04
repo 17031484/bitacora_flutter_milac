@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '../navbar.dart';
-
-enum Answers { buen_estado, no_aplica, mal_estado }
+import 'package:test_app/b_insOcular/emergencia.dart';
+import '../global.dart' as globals;
+import 'AppButtons.dart';
 
 class CInterna extends StatefulWidget {
   const CInterna({super.key});
@@ -11,24 +11,23 @@ class CInterna extends StatefulWidget {
 }
 
 class _CInternaState extends State<CInterna> {
-  Answers? _value_61 = Answers.buen_estado;
-  Answers? _value_62 = Answers.buen_estado;
-  Answers? _value_63 = Answers.buen_estado;
-  Answers? _value_64 = Answers.buen_estado;
-
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        home: Scaffold(
-      drawer: const NavBar(),
-      appBar: AppBar(
-        title: const Text('Area de Combustión Interna'),
-        backgroundColor: Colors.blue,
-      ),
-      body: ListView(
-          padding: EdgeInsets.zero, children: <Widget>[buildContent()]),
-      bottomNavigationBar: buildfixedButton(),
-    ));
+    return WillPopScope(
+      onWillPop: () async {
+        return false;
+      },
+      child: MaterialApp(
+          home: Scaffold(
+        appBar: AppBar(
+          title: const Text('Area de Combustión Interna'),
+          backgroundColor: Colors.blue,
+        ),
+        body: ListView(
+            padding: EdgeInsets.zero, children: <Widget>[buildContent()]),
+        bottomNavigationBar: buildfixedButton(),
+      )),
+    );
   }
 
   Widget buildContent() {
@@ -57,7 +56,11 @@ class _CInternaState extends State<CInterna> {
     return Padding(
       padding: const EdgeInsets.all(5.0),
       child: ElevatedButton(
-        onPressed: () {},
+        onPressed: () {
+          print(globals.selectedIndex);
+          Navigator.of(context)
+          .push(MaterialPageRoute(builder: (context) => Emergencia()));
+        },
         child: const Text('Guardar'),
       ),
     );
@@ -70,33 +73,35 @@ class _CInternaState extends State<CInterna> {
           //Primera pregunta
           title: Text('MOTOR'),
         ),
-        RadioListTile<Answers>(
-            title: const Text('Buen estado'),
-            value: Answers.buen_estado,
-            groupValue: _value_61,
-            onChanged: (Answers? value) {
-              setState(() {
-                _value_61 = value;
-              });
-            }),
-        RadioListTile<Answers>(
-            title: const Text('No aplica'),
-            value: Answers.no_aplica,
-            groupValue: _value_61,
-            onChanged: (Answers? value) {
-              setState(() {
-                _value_61 = value;
-              });
-            }),
-        RadioListTile<Answers>(
-            title: const Text('Mal estado'),
-            value: Answers.mal_estado,
-            groupValue: _value_61,
-            onChanged: (Answers? value) {
-              setState(() {
-                _value_61 = value;
-              });
-            }),
+        Row(
+          mainAxisAlignment:
+              MainAxisAlignment.center, //Center Row contents horizontally,
+          crossAxisAlignment:
+              CrossAxisAlignment.center, //Center Row contents vertically,
+          children: List.generate(3, (index) {
+            return InkWell(
+                onTap: () {
+                  setState(() {
+                    globals.selectedIndex[60] = index;
+                  });
+                },
+                child: AppButtons(
+                    color: globals.selectedIndex[60] == index
+                        ? Colors.white
+                        : Colors.black,
+                    backgroundColor: globals.selectedIndex[60] == index
+                        ? Colors.black
+                        : Color.fromARGB(186, 239, 234, 234),
+                    borderColor: globals.selectedIndex[60] == index
+                        ? Colors.black
+                        : Color.fromARGB(186, 239, 234, 234),
+                    text: index == 0
+                        ? 'Buen estado'
+                        : index == 1
+                            ? 'No aplica'
+                            : 'Mal estado'));
+          }),
+        ),
         const Divider(
           thickness: 5,
           indent: 10,
@@ -106,33 +111,35 @@ class _CInternaState extends State<CInterna> {
           //Segunda pregunta
           title: Text('RADIADOR'),
         ),
-        RadioListTile<Answers>(
-            title: const Text('Buen estado'),
-            value: Answers.buen_estado,
-            groupValue: _value_62,
-            onChanged: (Answers? value) {
-              setState(() {
-                _value_62 = value;
-              });
-            }),
-        RadioListTile<Answers>(
-            title: const Text('No aplica'),
-            value: Answers.no_aplica,
-            groupValue: _value_62,
-            onChanged: (Answers? value) {
-              setState(() {
-                _value_62 = value;
-              });
-            }),
-        RadioListTile<Answers>(
-            title: const Text('Mal estado'),
-            value: Answers.mal_estado,
-            groupValue: _value_62,
-            onChanged: (Answers? value) {
-              setState(() {
-                _value_62 = value;
-              });
-            }),
+        Row(
+          mainAxisAlignment:
+              MainAxisAlignment.center, //Center Row contents horizontally,
+          crossAxisAlignment:
+              CrossAxisAlignment.center, //Center Row contents vertically,
+          children: List.generate(3, (index) {
+            return InkWell(
+                onTap: () {
+                  setState(() {
+                    globals.selectedIndex[61] = index;
+                  });
+                },
+                child: AppButtons(
+                    color: globals.selectedIndex[61] == index
+                        ? Colors.white
+                        : Colors.black,
+                    backgroundColor: globals.selectedIndex[61] == index
+                        ? Colors.black
+                        : Color.fromARGB(186, 239, 234, 234),
+                    borderColor: globals.selectedIndex[61] == index
+                        ? Colors.black
+                        : Color.fromARGB(186, 239, 234, 234),
+                    text: index == 0
+                        ? 'Buen estado'
+                        : index == 1
+                            ? 'No aplica'
+                            : 'Mal estado'));
+          }),
+        ),
         const Divider(
           thickness: 5,
           indent: 10,
@@ -142,33 +149,35 @@ class _CInternaState extends State<CInterna> {
           //Primera pregunta
           title: Text('BATERIA'),
         ),
-        RadioListTile<Answers>(
-            title: const Text('Buen estado'),
-            value: Answers.buen_estado,
-            groupValue: _value_63,
-            onChanged: (Answers? value) {
-              setState(() {
-                _value_63 = value;
-              });
-            }),
-        RadioListTile<Answers>(
-            title: const Text('No aplica'),
-            value: Answers.no_aplica,
-            groupValue: _value_63,
-            onChanged: (Answers? value) {
-              setState(() {
-                _value_63 = value;
-              });
-            }),
-        RadioListTile<Answers>(
-            title: const Text('Mal estado'),
-            value: Answers.mal_estado,
-            groupValue: _value_63,
-            onChanged: (Answers? value) {
-              setState(() {
-                _value_63 = value;
-              });
-            }),
+        Row(
+          mainAxisAlignment:
+              MainAxisAlignment.center, //Center Row contents horizontally,
+          crossAxisAlignment:
+              CrossAxisAlignment.center, //Center Row contents vertically,
+          children: List.generate(3, (index) {
+            return InkWell(
+                onTap: () {
+                  setState(() {
+                    globals.selectedIndex[62] = index;
+                  });
+                },
+                child: AppButtons(
+                    color: globals.selectedIndex[62] == index
+                        ? Colors.white
+                        : Colors.black,
+                    backgroundColor: globals.selectedIndex[62] == index
+                        ? Colors.black
+                        : Color.fromARGB(186, 239, 234, 234),
+                    borderColor: globals.selectedIndex[62] == index
+                        ? Colors.black
+                        : Color.fromARGB(186, 239, 234, 234),
+                    text: index == 0
+                        ? 'Buen estado'
+                        : index == 1
+                            ? 'No aplica'
+                            : 'Mal estado'));
+          }),
+        ),
         const Divider(
           thickness: 5,
           indent: 10,
@@ -178,33 +187,35 @@ class _CInternaState extends State<CInterna> {
           //Primera pregunta
           title: Text('BANDAS'),
         ),
-        RadioListTile<Answers>(
-            title: const Text('Buen estado'),
-            value: Answers.buen_estado,
-            groupValue: _value_64,
-            onChanged: (Answers? value) {
-              setState(() {
-                _value_64 = value;
-              });
-            }),
-        RadioListTile<Answers>(
-            title: const Text('No aplica'),
-            value: Answers.no_aplica,
-            groupValue: _value_64,
-            onChanged: (Answers? value) {
-              setState(() {
-                _value_64 = value;
-              });
-            }),
-        RadioListTile<Answers>(
-            title: const Text('Mal estado'),
-            value: Answers.mal_estado,
-            groupValue: _value_64,
-            onChanged: (Answers? value) {
-              setState(() {
-                _value_64 = value;
-              });
-            }),
+        Row(
+          mainAxisAlignment:
+              MainAxisAlignment.center, //Center Row contents horizontally,
+          crossAxisAlignment:
+              CrossAxisAlignment.center, //Center Row contents vertically,
+          children: List.generate(3, (index) {
+            return InkWell(
+                onTap: () {
+                  setState(() {
+                    globals.selectedIndex[63] = index;
+                  });
+                },
+                child: AppButtons(
+                    color: globals.selectedIndex[63] == index
+                        ? Colors.white
+                        : Colors.black,
+                    backgroundColor: globals.selectedIndex[63] == index
+                        ? Colors.black
+                        : Color.fromARGB(186, 239, 234, 234),
+                    borderColor: globals.selectedIndex[63] == index
+                        ? Colors.black
+                        : Color.fromARGB(186, 239, 234, 234),
+                    text: index == 0
+                        ? 'Buen estado'
+                        : index == 1
+                            ? 'No aplica'
+                            : 'Mal estado'));
+          }),
+        ),
       ],
     );
   }

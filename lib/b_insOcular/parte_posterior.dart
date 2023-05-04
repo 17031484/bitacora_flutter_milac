@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:test_app/b_insOcular/remolque.dart';
 import '../navbar.dart';
-
-enum Answers { buen_estado, no_aplica, mal_estado }
+import '../global.dart' as globals;
+import 'AppButtons.dart';
 
 class PartePosterior extends StatefulWidget {
   const PartePosterior({super.key});
@@ -11,19 +12,6 @@ class PartePosterior extends StatefulWidget {
 }
 
 class _PartePosterioState extends State<PartePosterior> {
-  Answers? _value_70 = Answers.buen_estado;
-  Answers? _value_71 = Answers.buen_estado;
-  Answers? _value_72 = Answers.buen_estado;
-  Answers? _value_73 = Answers.buen_estado;
-  Answers? _value_74 = Answers.buen_estado;
-  Answers? _value_75 = Answers.buen_estado;
-  Answers? _value_76 = Answers.buen_estado;
-  Answers? _value_77 = Answers.buen_estado;
-  Answers? _value_78 = Answers.buen_estado;
-  Answers? _value_79 = Answers.buen_estado;
-  Answers? _value_80 = Answers.buen_estado;
-  Answers? _value_81 = Answers.buen_estado;
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -65,7 +53,10 @@ class _PartePosterioState extends State<PartePosterior> {
     return Padding(
       padding: const EdgeInsets.all(5.0),
       child: ElevatedButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.of(context)
+          .push(MaterialPageRoute(builder: (context) => Remolque()));
+        },
         child: const Text('Guardar'),
       ),
     );
@@ -89,63 +80,67 @@ class _PartePosterioState extends State<PartePosterior> {
               const ListTile(
                 title: Text('GALIBO (ALTURA)'),
               ),
-              RadioListTile<Answers>(
-                  title: const Text('Buen estado'),
-                  value: Answers.buen_estado,
-                  groupValue: _value_70,
-                  onChanged: (Answers? value) {
-                    setState(() {
-                      _value_70 = value;
-                    });
-                  }),
-              RadioListTile<Answers>(
-                  title: const Text('No aplica'),
-                  value: Answers.no_aplica,
-                  groupValue: _value_70,
-                  onChanged: (Answers? value) {
-                    setState(() {
-                      _value_70 = value;
-                    });
-                  }),
-              RadioListTile<Answers>(
-                  title: const Text('Mal estado'),
-                  value: Answers.mal_estado,
-                  groupValue: _value_70,
-                  onChanged: (Answers? value) {
-                    setState(() {
-                      _value_70 = value;
-                    });
-                  }),
+              Row(
+                mainAxisAlignment: MainAxisAlignment
+                    .center, //Center Row contents horizontally,
+                crossAxisAlignment:
+                    CrossAxisAlignment.center, //Center Row contents vertically,
+                children: List.generate(3, (index) {
+                  return InkWell(
+                      onTap: () {
+                        setState(() {
+                          globals.selectedIndex[69] = index;
+                        });
+                      },
+                      child: AppButtons(
+                          color: globals.selectedIndex[69] == index
+                              ? Colors.white
+                              : Colors.black,
+                          backgroundColor: globals.selectedIndex[69] == index
+                              ? Colors.black
+                              : Color.fromARGB(186, 239, 234, 234),
+                          borderColor: globals.selectedIndex[69] == index
+                              ? Colors.black
+                              : Color.fromARGB(186, 239, 234, 234),
+                          text: index == 0
+                              ? 'Buen estado'
+                              : index == 1
+                                  ? 'No aplica'
+                                  : 'Mal estado'));
+                }),
+              ),
               const ListTile(
                 title: Text('DIRECCIONALES'),
               ),
-              RadioListTile<Answers>(
-                  title: const Text('Buen estado'),
-                  value: Answers.buen_estado,
-                  groupValue: _value_71,
-                  onChanged: (Answers? value) {
-                    setState(() {
-                      _value_71 = value;
-                    });
-                  }),
-              RadioListTile<Answers>(
-                  title: const Text('No aplica'),
-                  value: Answers.no_aplica,
-                  groupValue: _value_71,
-                  onChanged: (Answers? value) {
-                    setState(() {
-                      _value_71 = value;
-                    });
-                  }),
-              RadioListTile<Answers>(
-                  title: const Text('Mal estado'),
-                  value: Answers.mal_estado,
-                  groupValue: _value_71,
-                  onChanged: (Answers? value) {
-                    setState(() {
-                      _value_71 = value;
-                    });
-                  }),
+              Row(
+                mainAxisAlignment: MainAxisAlignment
+                    .center, //Center Row contents horizontally,
+                crossAxisAlignment:
+                    CrossAxisAlignment.center, //Center Row contents vertically,
+                children: List.generate(3, (index) {
+                  return InkWell(
+                      onTap: () {
+                        setState(() {
+                          globals.selectedIndex[70] = index;
+                        });
+                      },
+                      child: AppButtons(
+                          color: globals.selectedIndex[70] == index
+                              ? Colors.white
+                              : Colors.black,
+                          backgroundColor: globals.selectedIndex[70] == index
+                              ? Colors.black
+                              : Color.fromARGB(186, 239, 234, 234),
+                          borderColor: globals.selectedIndex[70] == index
+                              ? Colors.black
+                              : Color.fromARGB(186, 239, 234, 234),
+                          text: index == 0
+                              ? 'Buen estado'
+                              : index == 1
+                                  ? 'No aplica'
+                                  : 'Mal estado'));
+                }),
+              ),
               const Divider(
                 thickness: 5,
                 indent: 10,
@@ -154,33 +149,35 @@ class _PartePosterioState extends State<PartePosterior> {
               const ListTile(
                 title: Text('DE ESTACIONAMIENTO'),
               ),
-              RadioListTile<Answers>(
-                  title: const Text('Buen estado'),
-                  value: Answers.buen_estado,
-                  groupValue: _value_72,
-                  onChanged: (Answers? value) {
-                    setState(() {
-                      _value_72 = value;
-                    });
-                  }),
-              RadioListTile<Answers>(
-                  title: const Text('No aplica'),
-                  value: Answers.no_aplica,
-                  groupValue: _value_72,
-                  onChanged: (Answers? value) {
-                    setState(() {
-                      _value_72 = value;
-                    });
-                  }),
-              RadioListTile<Answers>(
-                  title: const Text('Mal estado'),
-                  value: Answers.mal_estado,
-                  groupValue: _value_72,
-                  onChanged: (Answers? value) {
-                    setState(() {
-                      _value_72 = value;
-                    });
-                  }),
+              Row(
+                mainAxisAlignment: MainAxisAlignment
+                    .center, //Center Row contents horizontally,
+                crossAxisAlignment:
+                    CrossAxisAlignment.center, //Center Row contents vertically,
+                children: List.generate(3, (index) {
+                  return InkWell(
+                      onTap: () {
+                        setState(() {
+                          globals.selectedIndex[71] = index;
+                        });
+                      },
+                      child: AppButtons(
+                          color: globals.selectedIndex[71] == index
+                              ? Colors.white
+                              : Colors.black,
+                          backgroundColor: globals.selectedIndex[71] == index
+                              ? Colors.black
+                              : Color.fromARGB(186, 239, 234, 234),
+                          borderColor: globals.selectedIndex[71] == index
+                              ? Colors.black
+                              : Color.fromARGB(186, 239, 234, 234),
+                          text: index == 0
+                              ? 'Buen estado'
+                              : index == 1
+                                  ? 'No aplica'
+                                  : 'Mal estado'));
+                }),
+              ),
               const Divider(
                 thickness: 5,
                 indent: 10,
@@ -189,33 +186,35 @@ class _PartePosterioState extends State<PartePosterior> {
               const ListTile(
                 title: Text('DE ADVERTENCIA'),
               ),
-              RadioListTile<Answers>(
-                  title: const Text('Buen estado'),
-                  value: Answers.buen_estado,
-                  groupValue: _value_73,
-                  onChanged: (Answers? value) {
-                    setState(() {
-                      _value_73 = value;
-                    });
-                  }),
-              RadioListTile<Answers>(
-                  title: const Text('No aplica'),
-                  value: Answers.no_aplica,
-                  groupValue: _value_73,
-                  onChanged: (Answers? value) {
-                    setState(() {
-                      _value_73 = value;
-                    });
-                  }),
-              RadioListTile<Answers>(
-                  title: const Text('Mal estado'),
-                  value: Answers.mal_estado,
-                  groupValue: _value_73,
-                  onChanged: (Answers? value) {
-                    setState(() {
-                      _value_73 = value;
-                    });
-                  }),
+              Row(
+                mainAxisAlignment: MainAxisAlignment
+                    .center, //Center Row contents horizontally,
+                crossAxisAlignment:
+                    CrossAxisAlignment.center, //Center Row contents vertically,
+                children: List.generate(3, (index) {
+                  return InkWell(
+                      onTap: () {
+                        setState(() {
+                          globals.selectedIndex[72] = index;
+                        });
+                      },
+                      child: AppButtons(
+                          color: globals.selectedIndex[72] == index
+                              ? Colors.white
+                              : Colors.black,
+                          backgroundColor: globals.selectedIndex[72] == index
+                              ? Colors.black
+                              : Color.fromARGB(186, 239, 234, 234),
+                          borderColor: globals.selectedIndex[72] == index
+                              ? Colors.black
+                              : Color.fromARGB(186, 239, 234, 234),
+                          text: index == 0
+                              ? 'Buen estado'
+                              : index == 1
+                                  ? 'No aplica'
+                                  : 'Mal estado'));
+                }),
+              ),
               const Divider(
                 thickness: 5,
                 indent: 10,
@@ -224,33 +223,35 @@ class _PartePosterioState extends State<PartePosterior> {
               const ListTile(
                 title: Text('DE FRENADO'),
               ),
-              RadioListTile<Answers>(
-                  title: const Text('Buen estado'),
-                  value: Answers.buen_estado,
-                  groupValue: _value_74,
-                  onChanged: (Answers? value) {
-                    setState(() {
-                      _value_74 = value;
-                    });
-                  }),
-              RadioListTile<Answers>(
-                  title: const Text('No aplica'),
-                  value: Answers.no_aplica,
-                  groupValue: _value_74,
-                  onChanged: (Answers? value) {
-                    setState(() {
-                      _value_74 = value;
-                    });
-                  }),
-              RadioListTile<Answers>(
-                  title: const Text('Mal estado'),
-                  value: Answers.mal_estado,
-                  groupValue: _value_74,
-                  onChanged: (Answers? value) {
-                    setState(() {
-                      _value_74 = value;
-                    });
-                  }),
+              Row(
+                mainAxisAlignment: MainAxisAlignment
+                    .center, //Center Row contents horizontally,
+                crossAxisAlignment:
+                    CrossAxisAlignment.center, //Center Row contents vertically,
+                children: List.generate(3, (index) {
+                  return InkWell(
+                      onTap: () {
+                        setState(() {
+                          globals.selectedIndex[73] = index;
+                        });
+                      },
+                      child: AppButtons(
+                          color: globals.selectedIndex[73] == index
+                              ? Colors.white
+                              : Colors.black,
+                          backgroundColor: globals.selectedIndex[73] == index
+                              ? Colors.black
+                              : Color.fromARGB(186, 239, 234, 234),
+                          borderColor: globals.selectedIndex[73] == index
+                              ? Colors.black
+                              : Color.fromARGB(186, 239, 234, 234),
+                          text: index == 0
+                              ? 'Buen estado'
+                              : index == 1
+                                  ? 'No aplica'
+                                  : 'Mal estado'));
+                }),
+              ),
               const Divider(
                 thickness: 5,
                 indent: 10,
@@ -259,66 +260,70 @@ class _PartePosterioState extends State<PartePosterior> {
               const ListTile(
                 title: Text('DE MARCHA ATRAS'),
               ),
-              RadioListTile<Answers>(
-                  title: const Text('Buen estado'),
-                  value: Answers.buen_estado,
-                  groupValue: _value_75,
-                  onChanged: (Answers? value) {
-                    setState(() {
-                      _value_75 = value;
-                    });
-                  }),
-              RadioListTile<Answers>(
-                  title: const Text('No aplica'),
-                  value: Answers.no_aplica,
-                  groupValue: _value_75,
-                  onChanged: (Answers? value) {
-                    setState(() {
-                      _value_75 = value;
-                    });
-                  }),
-              RadioListTile<Answers>(
-                  title: const Text('Mal estado'),
-                  value: Answers.mal_estado,
-                  groupValue: _value_75,
-                  onChanged: (Answers? value) {
-                    setState(() {
-                      _value_75 = value;
-                    });
-                  }),
+              Row(
+                mainAxisAlignment: MainAxisAlignment
+                    .center, //Center Row contents horizontally,
+                crossAxisAlignment:
+                    CrossAxisAlignment.center, //Center Row contents vertically,
+                children: List.generate(3, (index) {
+                  return InkWell(
+                      onTap: () {
+                        setState(() {
+                          globals.selectedIndex[74] = index;
+                        });
+                      },
+                      child: AppButtons(
+                          color: globals.selectedIndex[74] == index
+                              ? Colors.white
+                              : Colors.black,
+                          backgroundColor: globals.selectedIndex[74] == index
+                              ? Colors.black
+                              : Color.fromARGB(186, 239, 234, 234),
+                          borderColor: globals.selectedIndex[74] == index
+                              ? Colors.black
+                              : Color.fromARGB(186, 239, 234, 234),
+                          text: index == 0
+                              ? 'Buen estado'
+                              : index == 1
+                                  ? 'No aplica'
+                                  : 'Mal estado'));
+                }),
+              ),
             ],
           ),
         ),
         const ListTile(
           title: Text('REFLEJANTES'),
         ),
-        RadioListTile<Answers>(
-            title: const Text('Buen estado'),
-            value: Answers.buen_estado,
-            groupValue: _value_76,
-            onChanged: (Answers? value) {
-              setState(() {
-                _value_76 = value;
-              });
-            }),
-        RadioListTile<Answers>(
-            title: const Text('No aplica'),
-            value: Answers.no_aplica,
-            groupValue: _value_76,
-            onChanged: (Answers? value) {
-              setState(() {
-                _value_76 = value;
-              });
-            }),
-        RadioListTile<Answers>(
-            title: const Text('Mal estado'),
-            value: Answers.mal_estado,
-            groupValue: _value_76,
-            onChanged: (Answers? value) {
-              setState(() {
-                _value_76 = value;
-              });
-            }),
+        Row(
+          mainAxisAlignment:
+              MainAxisAlignment.center, //Center Row contents horizontally,
+          crossAxisAlignment:
+              CrossAxisAlignment.center, //Center Row contents vertically,
+          children: List.generate(3, (index) {
+            return InkWell(
+                onTap: () {
+                  setState(() {
+                    globals.selectedIndex[75] = index;
+                  });
+                },
+                child: AppButtons(
+                    color: globals.selectedIndex[75] == index
+                        ? Colors.white
+                        : Colors.black,
+                    backgroundColor: globals.selectedIndex[75] == index
+                        ? Colors.black
+                        : Color.fromARGB(186, 239, 234, 234),
+                    borderColor: globals.selectedIndex[75] == index
+                        ? Colors.black
+                        : Color.fromARGB(186, 239, 234, 234),
+                    text: index == 0
+                        ? 'Buen estado'
+                        : index == 1
+                            ? 'No aplica'
+                            : 'Mal estado'));
+          }),
+        ),
         const Divider(
           thickness: 5,
           indent: 10,
@@ -327,33 +332,35 @@ class _PartePosterioState extends State<PartePosterior> {
         const ListTile(
           title: Text('GUARDA FANGOS (LODERAS)'),
         ),
-        RadioListTile<Answers>(
-            title: const Text('Buen estado'),
-            value: Answers.buen_estado,
-            groupValue: _value_77,
-            onChanged: (Answers? value) {
-              setState(() {
-                _value_77 = value;
-              });
-            }),
-        RadioListTile<Answers>(
-            title: const Text('No aplica'),
-            value: Answers.no_aplica,
-            groupValue: _value_77,
-            onChanged: (Answers? value) {
-              setState(() {
-                _value_77 = value;
-              });
-            }),
-        RadioListTile<Answers>(
-            title: const Text('Mal estado'),
-            value: Answers.mal_estado,
-            groupValue: _value_77,
-            onChanged: (Answers? value) {
-              setState(() {
-                _value_77 = value;
-              });
-            }),
+        Row(
+          mainAxisAlignment:
+              MainAxisAlignment.center, //Center Row contents horizontally,
+          crossAxisAlignment:
+              CrossAxisAlignment.center, //Center Row contents vertically,
+          children: List.generate(3, (index) {
+            return InkWell(
+                onTap: () {
+                  setState(() {
+                    globals.selectedIndex[76] = index;
+                  });
+                },
+                child: AppButtons(
+                    color: globals.selectedIndex[76] == index
+                        ? Colors.white
+                        : Colors.black,
+                    backgroundColor: globals.selectedIndex[76] == index
+                        ? Colors.black
+                        : Color.fromARGB(186, 239, 234, 234),
+                    borderColor: globals.selectedIndex[76] == index
+                        ? Colors.black
+                        : Color.fromARGB(186, 239, 234, 234),
+                    text: index == 0
+                        ? 'Buen estado'
+                        : index == 1
+                            ? 'No aplica'
+                            : 'Mal estado'));
+          }),
+        ),
         const Divider(
           thickness: 5,
           indent: 10,
@@ -362,33 +369,35 @@ class _PartePosterioState extends State<PartePosterior> {
         const ListTile(
           title: Text('DISPOSITIVOS DE ASEGURAMIENTO'),
         ),
-        RadioListTile<Answers>(
-            title: const Text('Buen estado'),
-            value: Answers.buen_estado,
-            groupValue: _value_78,
-            onChanged: (Answers? value) {
-              setState(() {
-                _value_78 = value;
-              });
-            }),
-        RadioListTile<Answers>(
-            title: const Text('No aplica'),
-            value: Answers.no_aplica,
-            groupValue: _value_78,
-            onChanged: (Answers? value) {
-              setState(() {
-                _value_78 = value;
-              });
-            }),
-        RadioListTile<Answers>(
-            title: const Text('Mal estado'),
-            value: Answers.mal_estado,
-            groupValue: _value_78,
-            onChanged: (Answers? value) {
-              setState(() {
-                _value_78 = value;
-              });
-            }),
+        Row(
+          mainAxisAlignment:
+              MainAxisAlignment.center, //Center Row contents horizontally,
+          crossAxisAlignment:
+              CrossAxisAlignment.center, //Center Row contents vertically,
+          children: List.generate(3, (index) {
+            return InkWell(
+                onTap: () {
+                  setState(() {
+                    globals.selectedIndex[77] = index;
+                  });
+                },
+                child: AppButtons(
+                    color: globals.selectedIndex[77] == index
+                        ? Colors.white
+                        : Colors.black,
+                    backgroundColor: globals.selectedIndex[77] == index
+                        ? Colors.black
+                        : Color.fromARGB(186, 239, 234, 234),
+                    borderColor: globals.selectedIndex[77] == index
+                        ? Colors.black
+                        : Color.fromARGB(186, 239, 234, 234),
+                    text: index == 0
+                        ? 'Buen estado'
+                        : index == 1
+                            ? 'No aplica'
+                            : 'Mal estado'));
+          }),
+        ),
         const Divider(
           thickness: 5,
           indent: 10,
@@ -397,33 +406,35 @@ class _PartePosterioState extends State<PartePosterior> {
         const ListTile(
           title: Text('CERRADURA DE PUERTAS'),
         ),
-        RadioListTile<Answers>(
-            title: const Text('Buen estado'),
-            value: Answers.buen_estado,
-            groupValue: _value_79,
-            onChanged: (Answers? value) {
-              setState(() {
-                _value_79 = value;
-              });
-            }),
-        RadioListTile<Answers>(
-            title: const Text('No aplica'),
-            value: Answers.no_aplica,
-            groupValue: _value_79,
-            onChanged: (Answers? value) {
-              setState(() {
-                _value_79 = value;
-              });
-            }),
-        RadioListTile<Answers>(
-            title: const Text('Mal estado'),
-            value: Answers.mal_estado,
-            groupValue: _value_79,
-            onChanged: (Answers? value) {
-              setState(() {
-                _value_79 = value;
-              });
-            }),
+        Row(
+          mainAxisAlignment:
+              MainAxisAlignment.center, //Center Row contents horizontally,
+          crossAxisAlignment:
+              CrossAxisAlignment.center, //Center Row contents vertically,
+          children: List.generate(3, (index) {
+            return InkWell(
+                onTap: () {
+                  setState(() {
+                    globals.selectedIndex[78] = index;
+                  });
+                },
+                child: AppButtons(
+                    color: globals.selectedIndex[78] == index
+                        ? Colors.white
+                        : Colors.black,
+                    backgroundColor: globals.selectedIndex[78] == index
+                        ? Colors.black
+                        : Color.fromARGB(186, 239, 234, 234),
+                    borderColor: globals.selectedIndex[78] == index
+                        ? Colors.black
+                        : Color.fromARGB(186, 239, 234, 234),
+                    text: index == 0
+                        ? 'Buen estado'
+                        : index == 1
+                            ? 'No aplica'
+                            : 'Mal estado'));
+          }),
+        ),
         const Divider(
           thickness: 5,
           indent: 10,
@@ -432,33 +443,35 @@ class _PartePosterioState extends State<PartePosterior> {
         const ListTile(
           title: Text('DEFENSA'),
         ),
-        RadioListTile<Answers>(
-            title: const Text('Buen estado'),
-            value: Answers.buen_estado,
-            groupValue: _value_80,
-            onChanged: (Answers? value) {
-              setState(() {
-                _value_80 = value;
-              });
-            }),
-        RadioListTile<Answers>(
-            title: const Text('No aplica'),
-            value: Answers.no_aplica,
-            groupValue: _value_80,
-            onChanged: (Answers? value) {
-              setState(() {
-                _value_80 = value;
-              });
-            }),
-        RadioListTile<Answers>(
-            title: const Text('Mal estado'),
-            value: Answers.mal_estado,
-            groupValue: _value_80,
-            onChanged: (Answers? value) {
-              setState(() {
-                _value_80 = value;
-              });
-            }),
+        Row(
+          mainAxisAlignment:
+              MainAxisAlignment.center, //Center Row contents horizontally,
+          crossAxisAlignment:
+              CrossAxisAlignment.center, //Center Row contents vertically,
+          children: List.generate(3, (index) {
+            return InkWell(
+                onTap: () {
+                  setState(() {
+                    globals.selectedIndex[79] = index;
+                  });
+                },
+                child: AppButtons(
+                    color: globals.selectedIndex[79] == index
+                        ? Colors.white
+                        : Colors.black,
+                    backgroundColor: globals.selectedIndex[79] == index
+                        ? Colors.black
+                        : Color.fromARGB(186, 239, 234, 234),
+                    borderColor: globals.selectedIndex[79] == index
+                        ? Colors.black
+                        : Color.fromARGB(186, 239, 234, 234),
+                    text: index == 0
+                        ? 'Buen estado'
+                        : index == 1
+                            ? 'No aplica'
+                            : 'Mal estado'));
+          }),
+        ),
         const Divider(
           thickness: 5,
           indent: 10,
@@ -467,33 +480,35 @@ class _PartePosterioState extends State<PartePosterior> {
         const ListTile(
           title: Text('ESCAPE'),
         ),
-        RadioListTile<Answers>(
-            title: const Text('Buen estado'),
-            value: Answers.buen_estado,
-            groupValue: _value_81,
-            onChanged: (Answers? value) {
-              setState(() {
-                _value_81 = value;
-              });
-            }),
-        RadioListTile<Answers>(
-            title: const Text('No aplica'),
-            value: Answers.no_aplica,
-            groupValue: _value_81,
-            onChanged: (Answers? value) {
-              setState(() {
-                _value_81 = value;
-              });
-            }),
-        RadioListTile<Answers>(
-            title: const Text('Mal estado'),
-            value: Answers.mal_estado,
-            groupValue: _value_81,
-            onChanged: (Answers? value) {
-              setState(() {
-                _value_81 = value;
-              });
-            }),
+        Row(
+          mainAxisAlignment:
+              MainAxisAlignment.center, //Center Row contents horizontally,
+          crossAxisAlignment:
+              CrossAxisAlignment.center, //Center Row contents vertically,
+          children: List.generate(3, (index) {
+            return InkWell(
+                onTap: () {
+                  setState(() {
+                    globals.selectedIndex[80] = index;
+                  });
+                },
+                child: AppButtons(
+                    color: globals.selectedIndex[80] == index
+                        ? Colors.white
+                        : Colors.black,
+                    backgroundColor: globals.selectedIndex[80] == index
+                        ? Colors.black
+                        : Color.fromARGB(186, 239, 234, 234),
+                    borderColor: globals.selectedIndex[80] == index
+                        ? Colors.black
+                        : Color.fromARGB(186, 239, 234, 234),
+                    text: index == 0
+                        ? 'Buen estado'
+                        : index == 1
+                            ? 'No aplica'
+                            : 'Mal estado'));
+          }),
+        ),
       ],
     );
   }

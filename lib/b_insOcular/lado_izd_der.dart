@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-
-enum Answers { buen_estado, no_aplica, mal_estado }
+import 'package:test_app/b_insOcular/autotanque.dart';
+import '../global.dart' as globals;
+import 'AppButtons.dart';
 
 class LadoID extends StatefulWidget {
   const LadoID({super.key});
@@ -10,29 +11,22 @@ class LadoID extends StatefulWidget {
 }
 
 class _LadoIDState extends State<LadoID> {
-  Answers? _value_32 = Answers.buen_estado;
-  Answers? _value_33 = Answers.buen_estado;
-  Answers? _value_34 = Answers.buen_estado;
-  Answers? _value_35 = Answers.buen_estado;
-  Answers? _value_36 = Answers.buen_estado;
-  Answers? _value_37 = Answers.buen_estado;
-  Answers? _value_38 = Answers.buen_estado;
-  Answers? _value_39 = Answers.buen_estado;
-  Answers? _value_40 = Answers.buen_estado;
-  Answers? _value_41 = Answers.buen_estado;
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        home: Scaffold(
-      appBar: AppBar(
-        title: const Text('Lado Izquierdo-Derecho'),
-        backgroundColor: Colors.blue,
-      ),
-      body: ListView(
-          padding: EdgeInsets.zero, children: <Widget>[buildContent()]),
-      bottomNavigationBar: buildfixedButton(),
-    ));
+    return WillPopScope(
+      onWillPop: () async{ return false; },
+      child: MaterialApp(
+          home: Scaffold(
+        appBar: AppBar(
+          title: const Text('Lado Izquierdo-Derecho'),
+          backgroundColor: Colors.blue,
+        ),
+        body: ListView(
+            padding: EdgeInsets.zero, children: <Widget>[buildContent()]),
+        bottomNavigationBar: buildfixedButton(),
+      )),
+    );
   }
 
   Widget buildContent() {
@@ -61,7 +55,11 @@ class _LadoIDState extends State<LadoID> {
     return Padding(
       padding: const EdgeInsets.all(5.0),
       child: ElevatedButton(
-        onPressed: () {},
+        onPressed: () {
+          print(globals.selectedIndex);
+          Navigator.of(context)
+          .push(MaterialPageRoute(builder: (context) => Autotanque()));
+        },
         child: const Text('Guardar'),
       ),
     );
@@ -74,33 +72,35 @@ class _LadoIDState extends State<LadoID> {
           //Primera pregunta
           title: Text('TANQUE(S) COMBUSTIBLE DERECHO Y TAPON'),
         ),
-        RadioListTile<Answers>(
-            title: const Text('Buen estado'),
-            value: Answers.buen_estado,
-            groupValue: _value_32,
-            onChanged: (Answers? value) {
-              setState(() {
-                _value_32 = value;
-              });
-            }),
-        RadioListTile<Answers>(
-            title: const Text('No aplica'),
-            value: Answers.no_aplica,
-            groupValue: _value_32,
-            onChanged: (Answers? value) {
-              setState(() {
-                _value_32 = value;
-              });
-            }),
-        RadioListTile<Answers>(
-            title: const Text('Mal estado'),
-            value: Answers.mal_estado,
-            groupValue: _value_32,
-            onChanged: (Answers? value) {
-              setState(() {
-                _value_32 = value;
-              });
-            }),
+        Row(
+          mainAxisAlignment:
+              MainAxisAlignment.center, //Center Row contents horizontally,
+          crossAxisAlignment:
+              CrossAxisAlignment.center, //Center Row contents vertically,
+          children: List.generate(3, (index) {
+            return InkWell(
+                onTap: () {
+                  setState(() {
+                    globals.selectedIndex[31] = index;
+                  });
+                },
+                child: AppButtons(
+                    color: globals.selectedIndex[31] == index
+                        ? Colors.white
+                        : Colors.black,
+                    backgroundColor: globals.selectedIndex[31] == index
+                        ? Colors.black
+                        : Color.fromARGB(186, 239, 234, 234),
+                    borderColor: globals.selectedIndex[31] == index
+                        ? Colors.black
+                        : Color.fromARGB(186, 239, 234, 234),
+                    text: index == 0
+                        ? 'Buen estado'
+                        : index == 1
+                            ? 'No aplica'
+                            : 'Mal estado'));
+          }),
+        ),
         const Divider(
           thickness: 5,
           indent: 10,
@@ -110,64 +110,68 @@ class _LadoIDState extends State<LadoID> {
           //Segunda pregunta
           title: Text('TANQUE(S) COMBUSTIBLE IZQUIERDO Y TAPON'),
         ),
-        RadioListTile<Answers>(
-            title: const Text('Buen estado'),
-            value: Answers.buen_estado,
-            groupValue: _value_33,
-            onChanged: (Answers? value) {
-              setState(() {
-                _value_33 = value;
-              });
-            }),
-        RadioListTile<Answers>(
-            title: const Text('No aplica'),
-            value: Answers.no_aplica,
-            groupValue: _value_33,
-            onChanged: (Answers? value) {
-              setState(() {
-                _value_33 = value;
-              });
-            }),
-        RadioListTile<Answers>(
-            title: const Text('Mal estado'),
-            value: Answers.mal_estado,
-            groupValue: _value_33,
-            onChanged: (Answers? value) {
-              setState(() {
-                _value_33 = value;
-              });
-            }),
+        Row(
+          mainAxisAlignment:
+              MainAxisAlignment.center, //Center Row contents horizontally,
+          crossAxisAlignment:
+              CrossAxisAlignment.center, //Center Row contents vertically,
+          children: List.generate(3, (index) {
+            return InkWell(
+                onTap: () {
+                  setState(() {
+                    globals.selectedIndex[32] = index;
+                  });
+                },
+                child: AppButtons(
+                    color: globals.selectedIndex[32] == index
+                        ? Colors.white
+                        : Colors.black,
+                    backgroundColor: globals.selectedIndex[32] == index
+                        ? Colors.black
+                        : Color.fromARGB(186, 239, 234, 234),
+                    borderColor: globals.selectedIndex[32] == index
+                        ? Colors.black
+                        : Color.fromARGB(186, 239, 234, 234),
+                    text: index == 0
+                        ? 'Buen estado'
+                        : index == 1
+                            ? 'No aplica'
+                            : 'Mal estado'));
+          }),
+        ),
         const ListTile(
           //Primera pregunta
           title: Text('LUCES DE ADVERTENCIA Y LATERALES'),
         ),
-        RadioListTile<Answers>(
-            title: const Text('Buen estado'),
-            value: Answers.buen_estado,
-            groupValue: _value_34,
-            onChanged: (Answers? value) {
-              setState(() {
-                _value_34 = value;
-              });
-            }),
-        RadioListTile<Answers>(
-            title: const Text('No aplica'),
-            value: Answers.no_aplica,
-            groupValue: _value_34,
-            onChanged: (Answers? value) {
-              setState(() {
-                _value_34 = value;
-              });
-            }),
-        RadioListTile<Answers>(
-            title: const Text('Mal estado'),
-            value: Answers.mal_estado,
-            groupValue: _value_34,
-            onChanged: (Answers? value) {
-              setState(() {
-                _value_34 = value;
-              });
-            }),
+        Row(
+          mainAxisAlignment:
+              MainAxisAlignment.center, //Center Row contents horizontally,
+          crossAxisAlignment:
+              CrossAxisAlignment.center, //Center Row contents vertically,
+          children: List.generate(3, (index) {
+            return InkWell(
+                onTap: () {
+                  setState(() {
+                    globals.selectedIndex[33] = index;
+                  });
+                },
+                child: AppButtons(
+                    color: globals.selectedIndex[33] == index
+                        ? Colors.white
+                        : Colors.black,
+                    backgroundColor: globals.selectedIndex[33] == index
+                        ? Colors.black
+                        : Color.fromARGB(186, 239, 234, 234),
+                    borderColor: globals.selectedIndex[33] == index
+                        ? Colors.black
+                        : Color.fromARGB(186, 239, 234, 234),
+                    text: index == 0
+                        ? 'Buen estado'
+                        : index == 1
+                            ? 'No aplica'
+                            : 'Mal estado'));
+          }),
+        ),
         const Divider(
           thickness: 5,
           indent: 10,
@@ -177,33 +181,35 @@ class _LadoIDState extends State<LadoID> {
           //Primera pregunta
           title: Text('REFLEJANTE'),
         ),
-        RadioListTile<Answers>(
-            title: const Text('Buen estado'),
-            value: Answers.buen_estado,
-            groupValue: _value_35,
-            onChanged: (Answers? value) {
-              setState(() {
-                _value_35 = value;
-              });
-            }),
-        RadioListTile<Answers>(
-            title: const Text('No aplica'),
-            value: Answers.no_aplica,
-            groupValue: _value_35,
-            onChanged: (Answers? value) {
-              setState(() {
-                _value_35 = value;
-              });
-            }),
-        RadioListTile<Answers>(
-            title: const Text('Mal estado'),
-            value: Answers.mal_estado,
-            groupValue: _value_35,
-            onChanged: (Answers? value) {
-              setState(() {
-                _value_35 = value;
-              });
-            }),
+        Row(
+          mainAxisAlignment:
+              MainAxisAlignment.center, //Center Row contents horizontally,
+          crossAxisAlignment:
+              CrossAxisAlignment.center, //Center Row contents vertically,
+          children: List.generate(3, (index) {
+            return InkWell(
+                onTap: () {
+                  setState(() {
+                    globals.selectedIndex[34] = index;
+                  });
+                },
+                child: AppButtons(
+                    color: globals.selectedIndex[34] == index
+                        ? Colors.white
+                        : Colors.black,
+                    backgroundColor: globals.selectedIndex[34] == index
+                        ? Colors.black
+                        : Color.fromARGB(186, 239, 234, 234),
+                    borderColor: globals.selectedIndex[34] == index
+                        ? Colors.black
+                        : Color.fromARGB(186, 239, 234, 234),
+                    text: index == 0
+                        ? 'Buen estado'
+                        : index == 1
+                            ? 'No aplica'
+                            : 'Mal estado'));
+          }),
+        ),
         const Divider(
           thickness: 5,
           indent: 10,
@@ -213,33 +219,35 @@ class _LadoIDState extends State<LadoID> {
           //Primera pregunta
           title: Text('LLANTAS DE REFACCION'),
         ),
-        RadioListTile<Answers>(
-            title: const Text('Buen estado'),
-            value: Answers.buen_estado,
-            groupValue: _value_36,
-            onChanged: (Answers? value) {
-              setState(() {
-                _value_36 = value;
-              });
-            }),
-        RadioListTile<Answers>(
-            title: const Text('No aplica'),
-            value: Answers.no_aplica,
-            groupValue: _value_36,
-            onChanged: (Answers? value) {
-              setState(() {
-                _value_36 = value;
-              });
-            }),
-        RadioListTile<Answers>(
-            title: const Text('Mal estado'),
-            value: Answers.mal_estado,
-            groupValue: _value_36,
-            onChanged: (Answers? value) {
-              setState(() {
-                _value_36 = value;
-              });
-            }),
+        Row(
+          mainAxisAlignment:
+              MainAxisAlignment.center, //Center Row contents horizontally,
+          crossAxisAlignment:
+              CrossAxisAlignment.center, //Center Row contents vertically,
+          children: List.generate(3, (index) {
+            return InkWell(
+                onTap: () {
+                  setState(() {
+                    globals.selectedIndex[35] = index;
+                  });
+                },
+                child: AppButtons(
+                    color: globals.selectedIndex[35] == index
+                        ? Colors.white
+                        : Colors.black,
+                    backgroundColor: globals.selectedIndex[35] == index
+                        ? Colors.black
+                        : Color.fromARGB(186, 239, 234, 234),
+                    borderColor: globals.selectedIndex[35] == index
+                        ? Colors.black
+                        : Color.fromARGB(186, 239, 234, 234),
+                    text: index == 0
+                        ? 'Buen estado'
+                        : index == 1
+                            ? 'No aplica'
+                            : 'Mal estado'));
+          }),
+        ),
         const Divider(
           thickness: 5,
           indent: 10,
@@ -249,33 +257,35 @@ class _LadoIDState extends State<LadoID> {
           //Primera pregunta
           title: Text('LLANTAS (DESGASTE Y AIRE)'),
         ),
-        RadioListTile<Answers>(
-            title: const Text('Buen estado'),
-            value: Answers.buen_estado,
-            groupValue: _value_37,
-            onChanged: (Answers? value) {
-              setState(() {
-                _value_37 = value;
-              });
-            }),
-        RadioListTile<Answers>(
-            title: const Text('No aplica'),
-            value: Answers.no_aplica,
-            groupValue: _value_37,
-            onChanged: (Answers? value) {
-              setState(() {
-                _value_37 = value;
-              });
-            }),
-        RadioListTile<Answers>(
-            title: const Text('Mal estado'),
-            value: Answers.mal_estado,
-            groupValue: _value_37,
-            onChanged: (Answers? value) {
-              setState(() {
-                _value_37 = value;
-              });
-            }),
+        Row(
+          mainAxisAlignment:
+              MainAxisAlignment.center, //Center Row contents horizontally,
+          crossAxisAlignment:
+              CrossAxisAlignment.center, //Center Row contents vertically,
+          children: List.generate(3, (index) {
+            return InkWell(
+                onTap: () {
+                  setState(() {
+                    globals.selectedIndex[36] = index;
+                  });
+                },
+                child: AppButtons(
+                    color: globals.selectedIndex[36] == index
+                        ? Colors.white
+                        : Colors.black,
+                    backgroundColor: globals.selectedIndex[36] == index
+                        ? Colors.black
+                        : Color.fromARGB(186, 239, 234, 234),
+                    borderColor: globals.selectedIndex[36] == index
+                        ? Colors.black
+                        : Color.fromARGB(186, 239, 234, 234),
+                    text: index == 0
+                        ? 'Buen estado'
+                        : index == 1
+                            ? 'No aplica'
+                            : 'Mal estado'));
+          }),
+        ),
         const Divider(
           thickness: 5,
           indent: 10,
@@ -285,33 +295,35 @@ class _LadoIDState extends State<LadoID> {
           //Primera pregunta
           title: Text('RINES SIN FISURAS'),
         ),
-        RadioListTile<Answers>(
-            title: const Text('Buen estado'),
-            value: Answers.buen_estado,
-            groupValue: _value_38,
-            onChanged: (Answers? value) {
-              setState(() {
-                _value_38 = value;
-              });
-            }),
-        RadioListTile<Answers>(
-            title: const Text('No aplica'),
-            value: Answers.no_aplica,
-            groupValue: _value_38,
-            onChanged: (Answers? value) {
-              setState(() {
-                _value_38 = value;
-              });
-            }),
-        RadioListTile<Answers>(
-            title: const Text('Mal estado'),
-            value: Answers.mal_estado,
-            groupValue: _value_38,
-            onChanged: (Answers? value) {
-              setState(() {
-                _value_38 = value;
-              });
-            }),
+        Row(
+          mainAxisAlignment:
+              MainAxisAlignment.center, //Center Row contents horizontally,
+          crossAxisAlignment:
+              CrossAxisAlignment.center, //Center Row contents vertically,
+          children: List.generate(3, (index) {
+            return InkWell(
+                onTap: () {
+                  setState(() {
+                    globals.selectedIndex[37] = index;
+                  });
+                },
+                child: AppButtons(
+                    color: globals.selectedIndex[37] == index
+                        ? Colors.white
+                        : Colors.black,
+                    backgroundColor: globals.selectedIndex[37] == index
+                        ? Colors.black
+                        : Color.fromARGB(186, 239, 234, 234),
+                    borderColor: globals.selectedIndex[37] == index
+                        ? Colors.black
+                        : Color.fromARGB(186, 239, 234, 234),
+                    text: index == 0
+                        ? 'Buen estado'
+                        : index == 1
+                            ? 'No aplica'
+                            : 'Mal estado'));
+          }),
+        ),
         const Divider(
           thickness: 5,
           indent: 10,
@@ -321,33 +333,35 @@ class _LadoIDState extends State<LadoID> {
           //Primera pregunta
           title: Text('BIRLOS Y TUERCAS SIN FISURAS'),
         ),
-        RadioListTile<Answers>(
-            title: const Text('Buen estado'),
-            value: Answers.buen_estado,
-            groupValue: _value_39,
-            onChanged: (Answers? value) {
-              setState(() {
-                _value_39 = value;
-              });
-            }),
-        RadioListTile<Answers>(
-            title: const Text('No aplica'),
-            value: Answers.no_aplica,
-            groupValue: _value_39,
-            onChanged: (Answers? value) {
-              setState(() {
-                _value_39 = value;
-              });
-            }),
-        RadioListTile<Answers>(
-            title: const Text('Mal estado'),
-            value: Answers.mal_estado,
-            groupValue: _value_39,
-            onChanged: (Answers? value) {
-              setState(() {
-                _value_39 = value;
-              });
-            }),
+        Row(
+          mainAxisAlignment:
+              MainAxisAlignment.center, //Center Row contents horizontally,
+          crossAxisAlignment:
+              CrossAxisAlignment.center, //Center Row contents vertically,
+          children: List.generate(3, (index) {
+            return InkWell(
+                onTap: () {
+                  setState(() {
+                    globals.selectedIndex[38] = index;
+                  });
+                },
+                child: AppButtons(
+                    color: globals.selectedIndex[38] == index
+                        ? Colors.white
+                        : Colors.black,
+                    backgroundColor: globals.selectedIndex[38] == index
+                        ? Colors.black
+                        : Color.fromARGB(186, 239, 234, 234),
+                    borderColor: globals.selectedIndex[38] == index
+                        ? Colors.black
+                        : Color.fromARGB(186, 239, 234, 234),
+                    text: index == 0
+                        ? 'Buen estado'
+                        : index == 1
+                            ? 'No aplica'
+                            : 'Mal estado'));
+          }),
+        ),
         const Divider(
           thickness: 5,
           indent: 10,
@@ -357,64 +371,68 @@ class _LadoIDState extends State<LadoID> {
           //Primera pregunta
           title: Text('SISTEMA DE ASEGURAMIENTO Y SUJECION DE CARGA'),
         ),
-        RadioListTile<Answers>(
-            title: const Text('Buen estado'),
-            value: Answers.buen_estado,
-            groupValue: _value_40,
-            onChanged: (Answers? value) {
-              setState(() {
-                _value_40 = value;
-              });
-            }),
-        RadioListTile<Answers>(
-            title: const Text('No aplica'),
-            value: Answers.no_aplica,
-            groupValue: _value_40,
-            onChanged: (Answers? value) {
-              setState(() {
-                _value_39 = value;
-              });
-            }),
-        RadioListTile<Answers>(
-            title: const Text('Mal estado'),
-            value: Answers.mal_estado,
-            groupValue: _value_40,
-            onChanged: (Answers? value) {
-              setState(() {
-                _value_40 = value;
-              });
-            }),
-            const ListTile(
+        Row(
+          mainAxisAlignment:
+              MainAxisAlignment.center, //Center Row contents horizontally,
+          crossAxisAlignment:
+              CrossAxisAlignment.center, //Center Row contents vertically,
+          children: List.generate(3, (index) {
+            return InkWell(
+                onTap: () {
+                  setState(() {
+                    globals.selectedIndex[39] = index;
+                  });
+                },
+                child: AppButtons(
+                    color: globals.selectedIndex[39] == index
+                        ? Colors.white
+                        : Colors.black,
+                    backgroundColor: globals.selectedIndex[39] == index
+                        ? Colors.black
+                        : Color.fromARGB(186, 239, 234, 234),
+                    borderColor: globals.selectedIndex[39] == index
+                        ? Colors.black
+                        : Color.fromARGB(186, 239, 234, 234),
+                    text: index == 0
+                        ? 'Buen estado'
+                        : index == 1
+                            ? 'No aplica'
+                            : 'Mal estado'));
+          }),
+        ),
+        const ListTile(
           //Primera pregunta
           title: Text('QUINTA RUEDA'),
         ),
-        RadioListTile<Answers>(
-            title: const Text('Buen estado'),
-            value: Answers.buen_estado,
-            groupValue: _value_41,
-            onChanged: (Answers? value) {
-              setState(() {
-                _value_41 = value;
-              });
-            }),
-        RadioListTile<Answers>(
-            title: const Text('No aplica'),
-            value: Answers.no_aplica,
-            groupValue: _value_41,
-            onChanged: (Answers? value) {
-              setState(() {
-                _value_41 = value;
-              });
-            }),
-        RadioListTile<Answers>(
-            title: const Text('Mal estado'),
-            value: Answers.mal_estado,
-            groupValue: _value_41,
-            onChanged: (Answers? value) {
-              setState(() {
-                _value_41 = value;
-              });
-            }),
+        Row(
+          mainAxisAlignment:
+              MainAxisAlignment.center, //Center Row contents horizontally,
+          crossAxisAlignment:
+              CrossAxisAlignment.center, //Center Row contents vertically,
+          children: List.generate(3, (index) {
+            return InkWell(
+                onTap: () {
+                  setState(() {
+                    globals.selectedIndex[40] = index;
+                  });
+                },
+                child: AppButtons(
+                    color: globals.selectedIndex[40] == index
+                        ? Colors.white
+                        : Colors.black,
+                    backgroundColor: globals.selectedIndex[40] == index
+                        ? Colors.black
+                        : Color.fromARGB(186, 239, 234, 234),
+                    borderColor: globals.selectedIndex[40] == index
+                        ? Colors.black
+                        : Color.fromARGB(186, 239, 234, 234),
+                    text: index == 0
+                        ? 'Buen estado'
+                        : index == 1
+                            ? 'No aplica'
+                            : 'Mal estado'));
+          }),
+        ),
       ],
     );
   }
