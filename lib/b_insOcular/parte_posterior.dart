@@ -37,7 +37,7 @@ class _PartePosterioState extends State<PartePosterior> {
             const ListTile(
               title: Center(
                 child: Text(
-                  'Parte Posteior',
+                  'Parte Posterior',
                   style: TextStyle(fontSize: 20),
                 ),
               ),

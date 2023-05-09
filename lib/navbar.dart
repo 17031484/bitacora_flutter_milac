@@ -1,6 +1,9 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:test_app/b_insOcular/revision_interna.dart';
 import 'Alerts.dart';
+import 'b_insOcular/localStorage.dart';
 import 'global.dart' as globals;
 
 class NavBar extends StatefulWidget {
@@ -11,6 +14,7 @@ class NavBar extends StatefulWidget {
 }
 
 class _NavBarState extends State<NavBar> {
+  localStorage storage = new localStorage();
   @override
   void initState() {
     super.initState();
@@ -34,23 +38,26 @@ class _NavBarState extends State<NavBar> {
             children: [
               ListTile(
                 title: const Text('Realizar Inspección'),
-                onTap: () {
-                  if(globals.no_viaje == 'SIN VIAJE'){
-                    Alerts.showConfirmAlert(context, Colors.amberAccent, 'Debe tener un viaje asignado','Ok');
-                    
-                  }
-                   else
-                  Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => const CheckList()));
+                onTap: () async {
+                  if (globals.no_viaje == 'SIN VIAJE')
+                    Alerts.showConfirmAlert(context, Colors.amberAccent,
+                        '¡Atención!', 'Debe tener un viaje asignado', 'Ok');
+                  if (await storage.checkListDone())
+                    Alerts.showConfirmAlert(
+                        context,
+                        Colors.amberAccent,
+                        '¡Atención!',
+                        'Usted ya realizó el checklist correspondiante del día de hoy',
+                        'Ok');
+                  else
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => const CheckList()));
                 },
               ),
               ListTile(
                 title: const Text('Ver historial'),
-                onTap: () {
-                  
-                },
+                onTap: () {},
               )
-              
             ],
           )
         ],

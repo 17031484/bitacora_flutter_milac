@@ -16,7 +16,7 @@ class Remolque extends StatefulWidget {
 }
 
 class _RemolqueState extends State<Remolque> {
-  late localStorage storage = new localStorage();
+  localStorage storage = new localStorage();
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -64,18 +64,10 @@ class _RemolqueState extends State<Remolque> {
       padding: const EdgeInsets.all(5.0),
       child: ElevatedButton(
         onPressed: () async {
-          print(globals.dateString);
-
-          if (await storage.checkListDone()) {
-            log('Checklist realizado');
-            //desplegar alerta
-          } else {
-            log('Checklist NO realizado');
-            globals.respuestas = convertAnswersToString();
-            storage.insertNewCheskListRow();
-            Alerts.showSuccessAlert(
-                context, 'Checklist realizado y almacenado correctamente');
-          }
+          globals.respuestas = convertAnswersToString();
+          storage.insertNewCheskListRow();
+          await Alerts.showSuccessAlert(
+              context, 'Checklist realizado y almacenado correctamente');
         },
         child: const Text('Guardar'),
       ),
