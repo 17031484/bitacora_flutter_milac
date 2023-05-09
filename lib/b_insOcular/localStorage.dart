@@ -1,6 +1,8 @@
+import 'dart:math';
+
 import 'package:sqflite/sqflite.dart';
-import 'generalStructure.dart';
 import 'package:path/path.dart';
+import 'package:test_app/global.dart' as globals;
 
 // ignore: camel_case_types
 class localStorage {
@@ -8,20 +10,34 @@ class localStorage {
     return openDatabase(join(await getDatabasesPath(), 'localStorage.db'),
         onCreate: (db, version) {
       return db.execute(
-          'CREATE TABLE checklistData (id INTEGER PRIMARY KEY, unidad TEXT, operador INTEGER, no_viaje INTEGER, respuestas TEXT)');
+          'CREATE TABLE checklistData (id INTEGER PRIMARY KEY, fecha Text, no_viaje INTEGER, unidad TEXT, IdOperador INTEGER, respuestas TEXT)');
     }, version: 1);
   }
 
-  static Future<int> insert(generalChecklistData data) async {
+  void insertNewCheskListRow() async {
     Database database = await _openDB();
-
-    return database.insert('checklistData', data.toMap());
+    await database.insert('checklistData', {
+      'fecha': globals.dateString,
+      'no_viaje': globals.no_viaje,
+      'unidad': globals.unidad,
+      'IdOperador': globals.operador,
+      'respuestas': globals.respuestas
+    });
   }
 
-  static Future<int> delete(generalChecklistData data) async {
+  Future<bool> checkListDone() async {
     Database database = await _openDB();
+    int count = await database.rawQuery(
+          'SELECT COUNT(*) FROM checklistData WHERE no_viaje = ? AND fecha = ?',
+          [globals.no_viaje, globals.dateString],
+        ).then((result) => Sqflite.firstIntValue(result)) ??
+        0;
 
-    return database
-        .delete('checklistData', where: 'id = ?', whereArgs: [data.id]);
+    print(count);
+    return count == 0 ? false : true;
   }
+
+  
+
+  //INSERT Y UPDATE SON LOS NECESARIOS PARA REALIZAR EL LLENADO Y VACIADO DE LA BD
 }

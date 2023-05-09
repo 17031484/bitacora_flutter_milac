@@ -56,7 +56,6 @@ class _LadoIDState extends State<LadoID> {
       padding: const EdgeInsets.all(5.0),
       child: ElevatedButton(
         onPressed: () {
-          print(globals.selectedIndex);
           Navigator.of(context)
           .push(MaterialPageRoute(builder: (context) => Autotanque()));
         },

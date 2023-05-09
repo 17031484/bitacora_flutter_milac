@@ -57,7 +57,6 @@ class _EmergenciaState extends State<Emergencia> {
       padding: const EdgeInsets.all(5.0),
       child: ElevatedButton(
         onPressed: () {
-          print(globals.selectedIndex);
           Navigator.of(context)
           .push(MaterialPageRoute(builder: (context) => PartePosterior()));
         },

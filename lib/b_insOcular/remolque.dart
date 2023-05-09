@@ -1,6 +1,12 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:test_app/home.page.dart';
+import '../Alerts.dart';
 import '../global.dart' as globals;
 import 'AppButtons.dart';
+import 'localStorage.dart';
+import 'dart:developer';
 
 class Remolque extends StatefulWidget {
   const Remolque({super.key});
@@ -10,14 +16,18 @@ class Remolque extends StatefulWidget {
 }
 
 class _RemolqueState extends State<Remolque> {
+  late localStorage storage = new localStorage();
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
-      onWillPop: () async{ return false; },
+      onWillPop: () async {
+        return false;
+      },
       child: MaterialApp(
           home: Scaffold(
         appBar: AppBar(
-          title: const Text('Remolque, Semiremolque (Incluyendo tipo de tanque)'),
+          title:
+              const Text('Remolque, Semiremolque (Incluyendo tipo de tanque)'),
           backgroundColor: Colors.blue,
         ),
         body: ListView(
@@ -53,8 +63,19 @@ class _RemolqueState extends State<Remolque> {
     return Padding(
       padding: const EdgeInsets.all(5.0),
       child: ElevatedButton(
-        onPressed: () {
-          print(globals.selectedIndex);
+        onPressed: () async {
+          print(globals.dateString);
+
+          if (await storage.checkListDone()) {
+            log('Checklist realizado');
+            //desplegar alerta
+          } else {
+            log('Checklist NO realizado');
+            globals.respuestas = convertAnswersToString();
+            storage.insertNewCheskListRow();
+            Alerts.showSuccessAlert(
+                context, 'Checklist realizado y almacenado correctamente');
+          }
         },
         child: const Text('Guardar'),
       ),
@@ -66,7 +87,8 @@ class _RemolqueState extends State<Remolque> {
       children: [
         const ListTile(
           title: Text('FRENO REMOLQUE'),
-        ),Row(
+        ),
+        Row(
           mainAxisAlignment:
               MainAxisAlignment.center, //Center Row contents horizontally,
           crossAxisAlignment:
@@ -333,66 +355,66 @@ class _RemolqueState extends State<Remolque> {
                 title: Text('DEMARCADORAS'),
               ),
               Row(
-          mainAxisAlignment:
-              MainAxisAlignment.center, //Center Row contents horizontally,
-          crossAxisAlignment:
-              CrossAxisAlignment.center, //Center Row contents vertically,
-          children: List.generate(3, (index) {
-            return InkWell(
-                onTap: () {
-                  setState(() {
-                    globals.selectedIndex[88] = index;
-                  });
-                },
-                child: AppButtons(
-                    color: globals.selectedIndex[88] == index
-                        ? Colors.white
-                        : Colors.black,
-                    backgroundColor: globals.selectedIndex[88] == index
-                        ? Colors.black
-                        : Color.fromARGB(186, 239, 234, 234),
-                    borderColor: globals.selectedIndex[88] == index
-                        ? Colors.black
-                        : Color.fromARGB(186, 239, 234, 234),
-                    text: index == 0
-                        ? 'Buen estado'
-                        : index == 1
-                            ? 'No aplica'
-                            : 'Mal estado'));
-          }),
-        ),
+                mainAxisAlignment: MainAxisAlignment
+                    .center, //Center Row contents horizontally,
+                crossAxisAlignment:
+                    CrossAxisAlignment.center, //Center Row contents vertically,
+                children: List.generate(3, (index) {
+                  return InkWell(
+                      onTap: () {
+                        setState(() {
+                          globals.selectedIndex[88] = index;
+                        });
+                      },
+                      child: AppButtons(
+                          color: globals.selectedIndex[88] == index
+                              ? Colors.white
+                              : Colors.black,
+                          backgroundColor: globals.selectedIndex[88] == index
+                              ? Colors.black
+                              : Color.fromARGB(186, 239, 234, 234),
+                          borderColor: globals.selectedIndex[88] == index
+                              ? Colors.black
+                              : Color.fromARGB(186, 239, 234, 234),
+                          text: index == 0
+                              ? 'Buen estado'
+                              : index == 1
+                                  ? 'No aplica'
+                                  : 'Mal estado'));
+                }),
+              ),
               const ListTile(
                 title: Text('DE IDENTIFICACION (PORTA PLACA)'),
               ),
               Row(
-          mainAxisAlignment:
-              MainAxisAlignment.center, //Center Row contents horizontally,
-          crossAxisAlignment:
-              CrossAxisAlignment.center, //Center Row contents vertically,
-          children: List.generate(3, (index) {
-            return InkWell(
-                onTap: () {
-                  setState(() {
-                    globals.selectedIndex[89] = index;
-                  });
-                },
-                child: AppButtons(
-                    color: globals.selectedIndex[89] == index
-                        ? Colors.white
-                        : Colors.black,
-                    backgroundColor: globals.selectedIndex[89] == index
-                        ? Colors.black
-                        : Color.fromARGB(186, 239, 234, 234),
-                    borderColor: globals.selectedIndex[89] == index
-                        ? Colors.black
-                        : Color.fromARGB(186, 239, 234, 234),
-                    text: index == 0
-                        ? 'Buen estado'
-                        : index == 1
-                            ? 'No aplica'
-                            : 'Mal estado'));
-          }),
-        ),
+                mainAxisAlignment: MainAxisAlignment
+                    .center, //Center Row contents horizontally,
+                crossAxisAlignment:
+                    CrossAxisAlignment.center, //Center Row contents vertically,
+                children: List.generate(3, (index) {
+                  return InkWell(
+                      onTap: () {
+                        setState(() {
+                          globals.selectedIndex[89] = index;
+                        });
+                      },
+                      child: AppButtons(
+                          color: globals.selectedIndex[89] == index
+                              ? Colors.white
+                              : Colors.black,
+                          backgroundColor: globals.selectedIndex[89] == index
+                              ? Colors.black
+                              : Color.fromARGB(186, 239, 234, 234),
+                          borderColor: globals.selectedIndex[89] == index
+                              ? Colors.black
+                              : Color.fromARGB(186, 239, 234, 234),
+                          text: index == 0
+                              ? 'Buen estado'
+                              : index == 1
+                                  ? 'No aplica'
+                                  : 'Mal estado'));
+                }),
+              ),
               const Divider(
                 thickness: 5,
                 indent: 10,
@@ -402,34 +424,34 @@ class _RemolqueState extends State<Remolque> {
                 title: Text('DIRECCIONALES'),
               ),
               Row(
-          mainAxisAlignment:
-              MainAxisAlignment.center, //Center Row contents horizontally,
-          crossAxisAlignment:
-              CrossAxisAlignment.center, //Center Row contents vertically,
-          children: List.generate(3, (index) {
-            return InkWell(
-                onTap: () {
-                  setState(() {
-                    globals.selectedIndex[90] = index;
-                  });
-                },
-                child: AppButtons(
-                    color: globals.selectedIndex[90] == index
-                        ? Colors.white
-                        : Colors.black,
-                    backgroundColor: globals.selectedIndex[90] == index
-                        ? Colors.black
-                        : Color.fromARGB(186, 239, 234, 234),
-                    borderColor: globals.selectedIndex[90] == index
-                        ? Colors.black
-                        : Color.fromARGB(186, 239, 234, 234),
-                    text: index == 0
-                        ? 'Buen estado'
-                        : index == 1
-                            ? 'No aplica'
-                            : 'Mal estado'));
-          }),
-        ),
+                mainAxisAlignment: MainAxisAlignment
+                    .center, //Center Row contents horizontally,
+                crossAxisAlignment:
+                    CrossAxisAlignment.center, //Center Row contents vertically,
+                children: List.generate(3, (index) {
+                  return InkWell(
+                      onTap: () {
+                        setState(() {
+                          globals.selectedIndex[90] = index;
+                        });
+                      },
+                      child: AppButtons(
+                          color: globals.selectedIndex[90] == index
+                              ? Colors.white
+                              : Colors.black,
+                          backgroundColor: globals.selectedIndex[90] == index
+                              ? Colors.black
+                              : Color.fromARGB(186, 239, 234, 234),
+                          borderColor: globals.selectedIndex[90] == index
+                              ? Colors.black
+                              : Color.fromARGB(186, 239, 234, 234),
+                          text: index == 0
+                              ? 'Buen estado'
+                              : index == 1
+                                  ? 'No aplica'
+                                  : 'Mal estado'));
+                }),
+              ),
               const Divider(
                 thickness: 5,
                 indent: 10,
@@ -439,34 +461,34 @@ class _RemolqueState extends State<Remolque> {
                 title: Text('DE ESTACIONAMIENTO'),
               ),
               Row(
-          mainAxisAlignment:
-              MainAxisAlignment.center, //Center Row contents horizontally,
-          crossAxisAlignment:
-              CrossAxisAlignment.center, //Center Row contents vertically,
-          children: List.generate(3, (index) {
-            return InkWell(
-                onTap: () {
-                  setState(() {
-                    globals.selectedIndex[91] = index;
-                  });
-                },
-                child: AppButtons(
-                    color: globals.selectedIndex[91] == index
-                        ? Colors.white
-                        : Colors.black,
-                    backgroundColor: globals.selectedIndex[91] == index
-                        ? Colors.black
-                        : Color.fromARGB(186, 239, 234, 234),
-                    borderColor: globals.selectedIndex[91] == index
-                        ? Colors.black
-                        : Color.fromARGB(186, 239, 234, 234),
-                    text: index == 0
-                        ? 'Buen estado'
-                        : index == 1
-                            ? 'No aplica'
-                            : 'Mal estado'));
-          }),
-        ),
+                mainAxisAlignment: MainAxisAlignment
+                    .center, //Center Row contents horizontally,
+                crossAxisAlignment:
+                    CrossAxisAlignment.center, //Center Row contents vertically,
+                children: List.generate(3, (index) {
+                  return InkWell(
+                      onTap: () {
+                        setState(() {
+                          globals.selectedIndex[91] = index;
+                        });
+                      },
+                      child: AppButtons(
+                          color: globals.selectedIndex[91] == index
+                              ? Colors.white
+                              : Colors.black,
+                          backgroundColor: globals.selectedIndex[91] == index
+                              ? Colors.black
+                              : Color.fromARGB(186, 239, 234, 234),
+                          borderColor: globals.selectedIndex[91] == index
+                              ? Colors.black
+                              : Color.fromARGB(186, 239, 234, 234),
+                          text: index == 0
+                              ? 'Buen estado'
+                              : index == 1
+                                  ? 'No aplica'
+                                  : 'Mal estado'));
+                }),
+              ),
               const Divider(
                 thickness: 5,
                 indent: 10,
@@ -476,34 +498,34 @@ class _RemolqueState extends State<Remolque> {
                 title: Text('DE GALIBO (ALTURA)'),
               ),
               Row(
-          mainAxisAlignment:
-              MainAxisAlignment.center, //Center Row contents horizontally,
-          crossAxisAlignment:
-              CrossAxisAlignment.center, //Center Row contents vertically,
-          children: List.generate(3, (index) {
-            return InkWell(
-                onTap: () {
-                  setState(() {
-                    globals.selectedIndex[92] = index;
-                  });
-                },
-                child: AppButtons(
-                    color: globals.selectedIndex[92] == index
-                        ? Colors.white
-                        : Colors.black,
-                    backgroundColor: globals.selectedIndex[92] == index
-                        ? Colors.black
-                        : Color.fromARGB(186, 239, 234, 234),
-                    borderColor: globals.selectedIndex[92] == index
-                        ? Colors.black
-                        : Color.fromARGB(186, 239, 234, 234),
-                    text: index == 0
-                        ? 'Buen estado'
-                        : index == 1
-                            ? 'No aplica'
-                            : 'Mal estado'));
-          }),
-        ),
+                mainAxisAlignment: MainAxisAlignment
+                    .center, //Center Row contents horizontally,
+                crossAxisAlignment:
+                    CrossAxisAlignment.center, //Center Row contents vertically,
+                children: List.generate(3, (index) {
+                  return InkWell(
+                      onTap: () {
+                        setState(() {
+                          globals.selectedIndex[92] = index;
+                        });
+                      },
+                      child: AppButtons(
+                          color: globals.selectedIndex[92] == index
+                              ? Colors.white
+                              : Colors.black,
+                          backgroundColor: globals.selectedIndex[92] == index
+                              ? Colors.black
+                              : Color.fromARGB(186, 239, 234, 234),
+                          borderColor: globals.selectedIndex[92] == index
+                              ? Colors.black
+                              : Color.fromARGB(186, 239, 234, 234),
+                          text: index == 0
+                              ? 'Buen estado'
+                              : index == 1
+                                  ? 'No aplica'
+                                  : 'Mal estado'));
+                }),
+              ),
               const Divider(
                 thickness: 5,
                 indent: 10,
@@ -513,35 +535,35 @@ class _RemolqueState extends State<Remolque> {
                 title: Text('DE ADVERTENCIA'),
               ),
               Row(
-          mainAxisAlignment:
-              MainAxisAlignment.center, //Center Row contents horizontally,
-          crossAxisAlignment:
-              CrossAxisAlignment.center, //Center Row contents vertically,
-          children: List.generate(3, (index) {
-            return InkWell(
-                onTap: () {
-                  setState(() {
-                    globals.selectedIndex[93] = index;
-                  });
-                },
-                child: AppButtons(
-                    color: globals.selectedIndex[93] == index
-                        ? Colors.white
-                        : Colors.black,
-                    backgroundColor: globals.selectedIndex[93] == index
-                        ? Colors.black
-                        : Color.fromARGB(186, 239, 234, 234),
-                    borderColor: globals.selectedIndex[93] == index
-                        ? Colors.black
-                        : Color.fromARGB(186, 239, 234, 234),
-                    text: index == 0
-                        ? 'Buen estado'
-                        : index == 1
-                            ? 'No aplica'
-                            : 'Mal estado'));
-          }),
-        ),
-                  const Divider(
+                mainAxisAlignment: MainAxisAlignment
+                    .center, //Center Row contents horizontally,
+                crossAxisAlignment:
+                    CrossAxisAlignment.center, //Center Row contents vertically,
+                children: List.generate(3, (index) {
+                  return InkWell(
+                      onTap: () {
+                        setState(() {
+                          globals.selectedIndex[93] = index;
+                        });
+                      },
+                      child: AppButtons(
+                          color: globals.selectedIndex[93] == index
+                              ? Colors.white
+                              : Colors.black,
+                          backgroundColor: globals.selectedIndex[93] == index
+                              ? Colors.black
+                              : Color.fromARGB(186, 239, 234, 234),
+                          borderColor: globals.selectedIndex[93] == index
+                              ? Colors.black
+                              : Color.fromARGB(186, 239, 234, 234),
+                          text: index == 0
+                              ? 'Buen estado'
+                              : index == 1
+                                  ? 'No aplica'
+                                  : 'Mal estado'));
+                }),
+              ),
+              const Divider(
                 thickness: 5,
                 indent: 10,
                 endIndent: 10,
@@ -550,35 +572,35 @@ class _RemolqueState extends State<Remolque> {
                 title: Text('DE FRENADO'),
               ),
               Row(
-          mainAxisAlignment:
-              MainAxisAlignment.center, //Center Row contents horizontally,
-          crossAxisAlignment:
-              CrossAxisAlignment.center, //Center Row contents vertically,
-          children: List.generate(3, (index) {
-            return InkWell(
-                onTap: () {
-                  setState(() {
-                    globals.selectedIndex[94] = index;
-                  });
-                },
-                child: AppButtons(
-                    color: globals.selectedIndex[94] == index
-                        ? Colors.white
-                        : Colors.black,
-                    backgroundColor: globals.selectedIndex[94] == index
-                        ? Colors.black
-                        : Color.fromARGB(186, 239, 234, 234),
-                    borderColor: globals.selectedIndex[94] == index
-                        ? Colors.black
-                        : Color.fromARGB(186, 239, 234, 234),
-                    text: index == 0
-                        ? 'Buen estado'
-                        : index == 1
-                            ? 'No aplica'
-                            : 'Mal estado'));
-          }),
-        ),
-                  const Divider(
+                mainAxisAlignment: MainAxisAlignment
+                    .center, //Center Row contents horizontally,
+                crossAxisAlignment:
+                    CrossAxisAlignment.center, //Center Row contents vertically,
+                children: List.generate(3, (index) {
+                  return InkWell(
+                      onTap: () {
+                        setState(() {
+                          globals.selectedIndex[94] = index;
+                        });
+                      },
+                      child: AppButtons(
+                          color: globals.selectedIndex[94] == index
+                              ? Colors.white
+                              : Colors.black,
+                          backgroundColor: globals.selectedIndex[94] == index
+                              ? Colors.black
+                              : Color.fromARGB(186, 239, 234, 234),
+                          borderColor: globals.selectedIndex[94] == index
+                              ? Colors.black
+                              : Color.fromARGB(186, 239, 234, 234),
+                          text: index == 0
+                              ? 'Buen estado'
+                              : index == 1
+                                  ? 'No aplica'
+                                  : 'Mal estado'));
+                }),
+              ),
+              const Divider(
                 thickness: 5,
                 indent: 10,
                 endIndent: 10,
@@ -587,38 +609,60 @@ class _RemolqueState extends State<Remolque> {
                 title: Text('DE MARCHA ATRAS'),
               ),
               Row(
-          mainAxisAlignment:
-              MainAxisAlignment.center, //Center Row contents horizontally,
-          crossAxisAlignment:
-              CrossAxisAlignment.center, //Center Row contents vertically,
-          children: List.generate(3, (index) {
-            return InkWell(
-                onTap: () {
-                  setState(() {
-                    globals.selectedIndex[95] = index;
-                  });
-                },
-                child: AppButtons(
-                    color: globals.selectedIndex[95] == index
-                        ? Colors.white
-                        : Colors.black,
-                    backgroundColor: globals.selectedIndex[95] == index
-                        ? Colors.black
-                        : Color.fromARGB(186, 239, 234, 234),
-                    borderColor: globals.selectedIndex[95] == index
-                        ? Colors.black
-                        : Color.fromARGB(186, 239, 234, 234),
-                    text: index == 0
-                        ? 'Buen estado'
-                        : index == 1
-                            ? 'No aplica'
-                            : 'Mal estado'));
-          }),
-        ), SizedBox(height: 5,)
+                mainAxisAlignment: MainAxisAlignment
+                    .center, //Center Row contents horizontally,
+                crossAxisAlignment:
+                    CrossAxisAlignment.center, //Center Row contents vertically,
+                children: List.generate(3, (index) {
+                  return InkWell(
+                      onTap: () {
+                        setState(() {
+                          globals.selectedIndex[95] = index;
+                        });
+                      },
+                      child: AppButtons(
+                          color: globals.selectedIndex[95] == index
+                              ? Colors.white
+                              : Colors.black,
+                          backgroundColor: globals.selectedIndex[95] == index
+                              ? Colors.black
+                              : Color.fromARGB(186, 239, 234, 234),
+                          borderColor: globals.selectedIndex[95] == index
+                              ? Colors.black
+                              : Color.fromARGB(186, 239, 234, 234),
+                          text: index == 0
+                              ? 'Buen estado'
+                              : index == 1
+                                  ? 'No aplica'
+                                  : 'Mal estado'));
+                }),
+              ),
+              SizedBox(
+                height: 5,
+              )
             ],
           ),
         ),
       ],
     );
+  }
+
+  String convertAnswersToString() {
+    List<MapEntry<int, String>> mapAnswers = [];
+    for (var i = 0; i < globals.selectedIndex.length; i++) {
+      mapAnswers.add(MapEntry(
+          i,
+          globals.selectedIndex[i] == 0
+              ? 'Buen estado'
+              : globals.selectedIndex[i] == 1
+                  ? 'No aplica'
+                  : 'Mal estado'));
+    }
+
+    String json = jsonEncode(mapAnswers
+        .map((entry) => {entry.key.toString(): entry.value})
+        .toList());
+
+    return json;
   }
 }

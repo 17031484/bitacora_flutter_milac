@@ -154,11 +154,11 @@ class _LoginPageState extends State<LoginPage> {
           .get('/dataUserExactly/${_userTEC.text}')
           .catchError((err) {}); 
       var data = json.decode(response);
-
+      print(data);
       globals.unidad = data[0]['Unidad'];
       globals.operador = data[0]['Operador'];
-      globals.no_viaje = data[0]['no_viaje'];
       globals.ruta = data[0]['Ruta'];
+      globals.no_viaje = (data[0]['viajeactual'] == 'N') ? 'SIN VIAJE' : data[0]['no_viaje'];
 
       //debugPrint(data[0]['ruta']);
       Navigator.of(context)

@@ -41,6 +41,9 @@ dependencies:
   sqflite: ^2.2.7
   path_provider: ^2.0.14
   flutter_native_splash: ^2.2.19
+  quickalert: ^1.0.1
+  intl: ^0.18.1
+  
 
 dev_dependencies:
   flutter_test:

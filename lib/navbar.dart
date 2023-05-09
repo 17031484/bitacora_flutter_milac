@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:test_app/b_insOcular/revision_interna.dart';
+import 'Alerts.dart';
 import 'global.dart' as globals;
 
 class NavBar extends StatefulWidget {
@@ -12,7 +13,6 @@ class NavBar extends StatefulWidget {
 class _NavBarState extends State<NavBar> {
   @override
   void initState() {
-    //TODO: IMPLEMENT USER DATA IN NAVBAR
     super.initState();
   }
 
@@ -35,6 +35,11 @@ class _NavBarState extends State<NavBar> {
               ListTile(
                 title: const Text('Realizar Inspección'),
                 onTap: () {
+                  if(globals.no_viaje == 'SIN VIAJE'){
+                    Alerts.showConfirmAlert(context, Colors.amberAccent, 'Debe tener un viaje asignado','Ok');
+                    
+                  }
+                   else
                   Navigator.of(context).push(MaterialPageRoute(
                       builder: (context) => const CheckList()));
                 },

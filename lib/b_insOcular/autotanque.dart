@@ -57,7 +57,6 @@ class _AutotanqueState extends State<Autotanque> {
       padding: const EdgeInsets.all(5.0),
       child: ElevatedButton(
         onPressed: () {
-          print(globals.selectedIndex);
           Navigator.of(context).push(
               MaterialPageRoute(builder: (context) => RevisionInterior()));
         },
