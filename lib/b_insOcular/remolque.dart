@@ -66,7 +66,7 @@ class _RemolqueState extends State<Remolque> {
         onPressed: () async {
           globals.respuestas = convertAnswersToString();
           storage.insertNewCheskListRow();
-          await Alerts.showSuccessAlert(
+          Alerts.showSuccessAlert(
               context, 'Checklist realizado y almacenado correctamente');
         },
         child: const Text('Guardar'),

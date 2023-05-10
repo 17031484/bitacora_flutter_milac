@@ -4,7 +4,6 @@ import 'global.dart' as globals;
 
 // ignore: must_be_immutable
 class HomePage extends StatefulWidget {
-
   @override
   State<HomePage> createState() => _HomePageState();
 }

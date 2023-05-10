@@ -15,13 +15,14 @@ class Alerts {
   }
 
   static Future<void> showSuccessAlert(context, message) async {
+    final alertContext = context;
       QuickAlert.show(
         title: '¡Correcto!',
         context: context,
         type: QuickAlertType.success,
         text: message,
-        onConfirmBtnTap: () {
-          Navigator.pop(context);
+        onConfirmBtnTap: () async{
+          Navigator.of(context, rootNavigator: true).pop('dialog');
           Navigator.push(
             context,
             MaterialPageRoute(builder: (context) => HomePage()),
