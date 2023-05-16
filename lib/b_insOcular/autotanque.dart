@@ -58,7 +58,19 @@ class _AutotanqueState extends State<Autotanque> {
       child: ElevatedButton(
         onPressed: () {
           Navigator.of(context).push(
-              MaterialPageRoute(builder: (context) => RevisionInterior()));
+            PageRouteBuilder(
+              transitionDuration: const Duration(milliseconds: 1500),
+              pageBuilder: (context, _, __) => RevisionInterior(),
+              transitionsBuilder: (_, animation, __, child) {
+                return SlideTransition(
+                  position: Tween(begin: Offset(1, 0), end: Offset.zero)
+                      .animate(CurvedAnimation(
+                          parent: animation, curve: Curves.easeInOut)),
+                  child: child,
+                );
+              },
+            ),
+          );
         },
         child: const Text('Guardar'),
       ),
@@ -513,7 +525,10 @@ class _AutotanqueState extends State<Autotanque> {
                             ? 'No aplica'
                             : 'Mal estado'));
           }),
-        ), SizedBox(height: 5,)
+        ),
+        SizedBox(
+          height: 5,
+        )
       ],
     );
   }

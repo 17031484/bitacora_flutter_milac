@@ -13,12 +13,12 @@ class CheckList extends StatefulWidget {
 }
 
 class _CheckListState extends State<CheckList> {
-  
-
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
-      onWillPop: ()async { return false; },
+      onWillPop: () async {
+        return false;
+      },
       child: MaterialApp(
         home: Scaffold(
           appBar: AppBar(
@@ -60,8 +60,20 @@ class _CheckListState extends State<CheckList> {
       padding: const EdgeInsets.all(5.0),
       child: ElevatedButton(
         onPressed: () {
-          Navigator.of(context)
-          .push(MaterialPageRoute(builder: (context) => FrenteExterior()));
+          Navigator.of(context).push(
+            PageRouteBuilder(
+              transitionDuration: const Duration(milliseconds: 1500),
+              pageBuilder: (context, _, __) => FrenteExterior(),
+              transitionsBuilder: (_, animation, __, child) {
+                return SlideTransition(
+                  position: Tween(begin: Offset(1, 0), end: Offset.zero)
+                      .animate(CurvedAnimation(
+                          parent: animation, curve: Curves.easeInOut)),
+                  child: child,
+                );
+              },
+            ),
+          );
         },
         child: const Text('Guardar'),
       ),
@@ -88,8 +100,9 @@ class _CheckListState extends State<CheckList> {
                   });
                 },
                 child: AppButtons(
-                    color:
-                        globals.selectedIndex[0] == index ? Colors.white : Colors.black,
+                    color: globals.selectedIndex[0] == index
+                        ? Colors.white
+                        : Colors.black,
                     backgroundColor: globals.selectedIndex[0] == index
                         ? Colors.black
                         : Color.fromARGB(186, 239, 234, 234),
@@ -125,8 +138,9 @@ class _CheckListState extends State<CheckList> {
                   });
                 },
                 child: AppButtons(
-                    color:
-                        globals.selectedIndex[1] == index ? Colors.white : Colors.black,
+                    color: globals.selectedIndex[1] == index
+                        ? Colors.white
+                        : Colors.black,
                     backgroundColor: globals.selectedIndex[1] == index
                         ? Colors.black
                         : Color.fromARGB(186, 239, 234, 234),
@@ -162,8 +176,9 @@ class _CheckListState extends State<CheckList> {
                   });
                 },
                 child: AppButtons(
-                    color:
-                        globals.selectedIndex[2] == index ? Colors.white : Colors.black,
+                    color: globals.selectedIndex[2] == index
+                        ? Colors.white
+                        : Colors.black,
                     backgroundColor: globals.selectedIndex[2] == index
                         ? Colors.black
                         : Color.fromARGB(186, 239, 234, 234),
@@ -252,9 +267,10 @@ class _CheckListState extends State<CheckList> {
                                 color: globals.selectedIndex[4] == index
                                     ? Colors.white
                                     : Colors.black,
-                                backgroundColor: globals.selectedIndex[4] == index
-                                    ? Colors.black
-                                    : Color.fromARGB(186, 239, 234, 234),
+                                backgroundColor:
+                                    globals.selectedIndex[4] == index
+                                        ? Colors.black
+                                        : Color.fromARGB(186, 239, 234, 234),
                                 borderColor: globals.selectedIndex[4] == index
                                     ? Colors.black
                                     : Color.fromARGB(186, 239, 234, 234),
@@ -289,9 +305,10 @@ class _CheckListState extends State<CheckList> {
                                 color: globals.selectedIndex[5] == index
                                     ? Colors.white
                                     : Colors.black,
-                                backgroundColor: globals.selectedIndex[5] == index
-                                    ? Colors.black
-                                    : Color.fromARGB(186, 239, 234, 234),
+                                backgroundColor:
+                                    globals.selectedIndex[5] == index
+                                        ? Colors.black
+                                        : Color.fromARGB(186, 239, 234, 234),
                                 borderColor: globals.selectedIndex[5] == index
                                     ? Colors.black
                                     : Color.fromARGB(186, 239, 234, 234),
@@ -326,9 +343,10 @@ class _CheckListState extends State<CheckList> {
                                 color: globals.selectedIndex[6] == index
                                     ? Colors.white
                                     : Colors.black,
-                                backgroundColor: globals.selectedIndex[6] == index
-                                    ? Colors.black
-                                    : Color.fromARGB(186, 239, 234, 234),
+                                backgroundColor:
+                                    globals.selectedIndex[6] == index
+                                        ? Colors.black
+                                        : Color.fromARGB(186, 239, 234, 234),
                                 borderColor: globals.selectedIndex[6] == index
                                     ? Colors.black
                                     : Color.fromARGB(186, 239, 234, 234),
@@ -363,9 +381,10 @@ class _CheckListState extends State<CheckList> {
                                 color: globals.selectedIndex[7] == index
                                     ? Colors.white
                                     : Colors.black,
-                                backgroundColor: globals.selectedIndex[7] == index
-                                    ? Colors.black
-                                    : Color.fromARGB(186, 239, 234, 234),
+                                backgroundColor:
+                                    globals.selectedIndex[7] == index
+                                        ? Colors.black
+                                        : Color.fromARGB(186, 239, 234, 234),
                                 borderColor: globals.selectedIndex[7] == index
                                     ? Colors.black
                                     : Color.fromARGB(186, 239, 234, 234),
@@ -400,9 +419,10 @@ class _CheckListState extends State<CheckList> {
                                 color: globals.selectedIndex[8] == index
                                     ? Colors.white
                                     : Colors.black,
-                                backgroundColor: globals.selectedIndex[8] == index
-                                    ? Colors.black
-                                    : Color.fromARGB(186, 239, 234, 234),
+                                backgroundColor:
+                                    globals.selectedIndex[8] == index
+                                        ? Colors.black
+                                        : Color.fromARGB(186, 239, 234, 234),
                                 borderColor: globals.selectedIndex[8] == index
                                     ? Colors.black
                                     : Color.fromARGB(186, 239, 234, 234),
@@ -437,9 +457,10 @@ class _CheckListState extends State<CheckList> {
                                 color: globals.selectedIndex[9] == index
                                     ? Colors.white
                                     : Colors.black,
-                                backgroundColor: globals.selectedIndex[9] == index
-                                    ? Colors.black
-                                    : Color.fromARGB(186, 239, 234, 234),
+                                backgroundColor:
+                                    globals.selectedIndex[9] == index
+                                        ? Colors.black
+                                        : Color.fromARGB(186, 239, 234, 234),
                                 borderColor: globals.selectedIndex[9] == index
                                     ? Colors.black
                                     : Color.fromARGB(186, 239, 234, 234),

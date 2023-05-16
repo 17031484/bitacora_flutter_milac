@@ -14,12 +14,12 @@ class Alerts {
     );
   }
 
-  static Future<void> showSuccessAlert(context, message) async {
-    final alertContext = context;
+  static Future<void> showSuccessAlert(titulo,context, message, QuickAlertType type) async {
       QuickAlert.show(
-        title: '¡Correcto!',
+        barrierDismissible: false, 
+        title: titulo,
         context: context,
-        type: QuickAlertType.success,
+        type: type,
         text: message,
         onConfirmBtnTap: () async{
           Navigator.of(context, rootNavigator: true).pop('dialog');
@@ -29,4 +29,6 @@ class Alerts {
           );
         });
   }
+
+  
 }

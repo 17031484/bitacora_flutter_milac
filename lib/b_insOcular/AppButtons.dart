@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class AppButtons extends StatelessWidget {
   final Color color;
   final Color backgroundColor;

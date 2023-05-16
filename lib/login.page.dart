@@ -1,7 +1,5 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:test_app/baseinfo.dart';
 import 'package:test_app/home.page.dart';
 import 'global.dart' as globals;
@@ -16,7 +14,6 @@ class _LoginPageState extends State<LoginPage> {
   final TextEditingController _passwordTEC = TextEditingController();
   bool? val = false;
   bool? check = false;
-  bool _isLoading = false;
 
   @override
   void initState() {

@@ -57,8 +57,20 @@ class _RevisionInteriorState extends State<RevisionInterior> {
       padding: const EdgeInsets.all(5.0),
       child: ElevatedButton(
         onPressed: () {
-          Navigator.of(context)
-          .push(MaterialPageRoute(builder: (context) => CInterna()));
+          Navigator.of(context).push(
+            PageRouteBuilder(
+              transitionDuration: const Duration(milliseconds: 1500),
+              pageBuilder: (context, _, __) => CInterna(),
+              transitionsBuilder: (_, animation, __, child) {
+                return SlideTransition(
+                  position: Tween(begin: Offset(1, 0), end: Offset.zero)
+                      .animate(CurvedAnimation(
+                          parent: animation, curve: Curves.easeInOut)),
+                  child: child,
+                );
+              },
+            ),
+          );
         },
         child: const Text('Guardar'),
       ),
@@ -323,7 +335,10 @@ class _RevisionInteriorState extends State<RevisionInterior> {
                             ? 'No aplica'
                             : 'Mal estado'));
           }),
-        ), SizedBox(height: 5,)
+        ),
+        SizedBox(
+          height: 5,
+        )
       ],
     );
   }

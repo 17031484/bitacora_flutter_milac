@@ -1,7 +1,7 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
+import 'package:quickalert/models/quickalert_type.dart';
 import 'package:test_app/b_insOcular/revision_interna.dart';
+import 'package:test_app/pdf/viewPDFHistory.dart';
 import 'Alerts.dart';
 import 'b_insOcular/localStorage.dart';
 import 'global.dart' as globals;
@@ -40,23 +40,25 @@ class _NavBarState extends State<NavBar> {
                 title: const Text('Realizar Inspección'),
                 onTap: () async {
                   if (globals.no_viaje == 'SIN VIAJE')
-                    Alerts.showConfirmAlert(context, Colors.amberAccent,
-                        '¡Atención!', 'Debe tener un viaje asignado', 'Ok');
+                    Alerts.showSuccessAlert('¡Atención!', context,
+                        'Debe tener un viaje asignado', QuickAlertType.info);
                   if (await storage.checkListDone())
-                    Alerts.showConfirmAlert(
-                        context,
-                        Colors.amberAccent,
+                    Alerts.showSuccessAlert(
                         '¡Atención!',
+                        context,
                         'Usted ya realizó el checklist correspondiante del día de hoy',
-                        'Ok');
-                  else
+                        QuickAlertType.info);
+                  if(globals.no_viaje != 'SIN VIAJE' && !await storage.checkListDone())
                     Navigator.of(context).push(MaterialPageRoute(
                         builder: (context) => const CheckList()));
                 },
               ),
               ListTile(
                 title: const Text('Ver historial'),
-                onTap: () {},
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => viewPDFHistory()));
+                },
               )
             ],
           )

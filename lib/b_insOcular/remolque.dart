@@ -1,12 +1,10 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'package:test_app/home.page.dart';
+import 'package:quickalert/quickalert.dart';
 import '../Alerts.dart';
 import '../global.dart' as globals;
 import 'AppButtons.dart';
 import 'localStorage.dart';
-import 'dart:developer';
 
 class Remolque extends StatefulWidget {
   const Remolque({super.key});
@@ -67,7 +65,7 @@ class _RemolqueState extends State<Remolque> {
           globals.respuestas = convertAnswersToString();
           storage.insertNewCheskListRow();
           Alerts.showSuccessAlert(
-              context, 'Checklist realizado y almacenado correctamente');
+              '¡Correcto!', context,'Checklist realizado y almacenado correctamente', QuickAlertType.success);
         },
         child: const Text('Guardar'),
       ),

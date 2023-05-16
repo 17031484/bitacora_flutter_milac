@@ -57,8 +57,20 @@ class _FrenteExteriorState extends State<FrenteExterior> {
       padding: const EdgeInsets.all(5.0),
       child: ElevatedButton(
         onPressed: () {
-          Navigator.of(context)
-          .push(MaterialPageRoute(builder: (context) => LadoID()));
+          Navigator.of(context).push(
+            PageRouteBuilder(
+              transitionDuration: const Duration(milliseconds: 1500),
+              pageBuilder: (context, _, __) => LadoID(),
+              transitionsBuilder: (_, animation, __, child) {
+                return SlideTransition(
+                  position: Tween(begin: Offset(1, 0), end: Offset.zero)
+                      .animate(CurvedAnimation(
+                          parent: animation, curve: Curves.easeInOut)),
+                  child: child,
+                );
+              },
+            ),
+          );
         },
         child: const Text('Guardar'),
       ),
@@ -288,7 +300,10 @@ class _FrenteExteriorState extends State<FrenteExterior> {
                                   ? 'No aplica'
                                   : 'Mal estado'));
                 }),
-              ), SizedBox(height: 5,)
+              ),
+              SizedBox(
+                height: 5,
+              )
             ],
           ),
         ),
@@ -439,7 +454,10 @@ class _FrenteExteriorState extends State<FrenteExterior> {
                             ? 'No aplica'
                             : 'Mal estado'));
           }),
-        ), SizedBox(height: 5,)
+        ),
+        SizedBox(
+          height: 5,
+        )
       ],
     );
   }

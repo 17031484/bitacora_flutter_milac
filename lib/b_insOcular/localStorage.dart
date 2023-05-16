@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 import 'package:test_app/global.dart' as globals;
@@ -37,7 +35,12 @@ class localStorage {
     return count == 0 ? false : true;
   }
 
-  
+  Future<List<Map>> getRecordsFromDatabase() async {
+    Database db = await _openDB();
+    return db.query('checklistData',
+        where: 'IdOperador = ? AND unidad = ?',
+        whereArgs: [globals.operador, globals.unidad]);
+  }
 
   //INSERT Y UPDATE SON LOS NECESARIOS PARA REALIZAR EL LLENADO Y VACIADO DE LA BD
 }
