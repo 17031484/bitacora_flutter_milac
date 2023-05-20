@@ -310,7 +310,7 @@ class _FrenteExteriorState extends State<FrenteExterior> {
         const ListTile(
           //Primera pregunta
           title:
-              Text('LLANTAS (NO RENOVADAS EN EL EJE DELANTERO, DESGASTADAS)'),
+              Text('LLANTAS (NO RENOVADAS EN EL EJE DELANTERO, DESGASTE)'),
         ),
         Row(
           mainAxisAlignment:

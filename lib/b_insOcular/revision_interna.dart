@@ -161,7 +161,7 @@ class _CheckListState extends State<CheckList> {
         ),
         const ListTile(
           //Tercera pregunta
-          title: Text('DEPOSITO DE ADVERTENCIA DE POCO AIRE O VACIO'),
+          title: Text('DISPOSITIVO DE ADVERTENCIA DE POCO AIRE O VACIO'),
         ),
         Row(
           mainAxisAlignment:

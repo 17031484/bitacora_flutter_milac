@@ -191,7 +191,7 @@ class _RevisionInteriorState extends State<RevisionInterior> {
         ),
         const ListTile(
           //Primera pregunta
-          title: Text('LINEAS DEA AIRE'),
+          title: Text('LINEAS DE AIRE'),
         ),
         Row(
           mainAxisAlignment:
