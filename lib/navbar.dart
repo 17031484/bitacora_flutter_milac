@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:quickalert/models/quickalert_type.dart';
 import 'package:test_app/b_insOcular/revision_interna.dart';
 import 'package:test_app/pdf/viewPDFHistory.dart';
+import 'package:test_app/pdf/viewRegisters.dart';
 import 'Alerts.dart';
 import 'b_insOcular/localStorage.dart';
 import 'global.dart' as globals;
@@ -48,7 +49,8 @@ class _NavBarState extends State<NavBar> {
                         context,
                         'Usted ya realizó el checklist correspondiante del día de hoy',
                         QuickAlertType.info);
-                  if(globals.no_viaje != 'SIN VIAJE' && !await storage.checkListDone())
+                  if (globals.no_viaje != 'SIN VIAJE' &&
+                      !await storage.checkListDone())
                     Navigator.of(context).push(MaterialPageRoute(
                         builder: (context) => const CheckList()));
                 },
@@ -58,6 +60,19 @@ class _NavBarState extends State<NavBar> {
                 onTap: () {
                   Navigator.of(context).push(MaterialPageRoute(
                       builder: (context) => viewPDFHistory()));
+                },
+              )
+            ],
+          ),
+          ExpansionTile(
+            leading: const Icon(Icons.access_time),
+            title: const Text('Horas de Servicio del Conductor'),
+            children: [
+              ListTile(
+                title: const Text('Ver registros'),
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => viewRegisters()));
                 },
               )
             ],
