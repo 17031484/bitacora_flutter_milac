@@ -133,8 +133,8 @@ class _viewPDFHistoryState extends State<viewPDFHistory> {
     var lastRecord = await storage.getTotalRecords(noViaje);
     print(lastRecord);
 
-    List<Map<String, dynamic>> totalRecords =
-        await storage.getTotalRecords(noViaje);
+    //List<Map<String, dynamic>> totalRecords =
+    //    await storage.getTotalRecords(noViaje);
     newPDF(storage.getDataFormRecord(noViaje));
   }
 
