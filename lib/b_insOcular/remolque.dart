@@ -4,7 +4,7 @@ import 'package:quickalert/quickalert.dart';
 import '../Alerts.dart';
 import '../global.dart' as globals;
 import 'AppButtons.dart';
-import 'localStorage.dart';
+import '../DB/localStorage.dart';
 
 class Remolque extends StatefulWidget {
   const Remolque({super.key});

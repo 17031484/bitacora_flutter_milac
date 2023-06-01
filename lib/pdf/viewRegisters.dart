@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:syncfusion_flutter_pdf/pdf.dart';
-
+import 'package:test_app/navbar.dart';
+import 'package:test_app/global.dart' as globals;
+import '../DB/baseinfo.dart';
 import 'PdfApi.dart';
 
 class viewRegisters extends StatefulWidget {
@@ -14,18 +16,52 @@ class viewRegisters extends StatefulWidget {
 class _viewRegistersState extends State<viewRegisters> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Horas de Servicio'),
-      ),
-      body: Center(
-        child: ElevatedButton(
-          onPressed: () {
-            // Acciones a realizar cuando se presiona el botón
-            _showPDF();
-          },
-          child: Text('Presionar'),
+    return MaterialApp(
+      home: Scaffold(
+        drawer: NavBar(),
+        appBar: AppBar(
+          title: Text('Horas de Servicio'),
         ),
+        body: FutureBuilder<List<Map>>(
+            future: getServerResponse(),
+            builder: (BuildContext context, AsyncSnapshot<List<Map>> snapshot) {
+              if (snapshot.hasData) {
+                List<Map> records = snapshot.data!;
+                return Center(
+                  child: Column(
+                    children: records.map((record) {
+                      String buttonText = 'Hola';
+                      return Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: Container(
+                          width: 350,
+                          height: 100,
+                          child: ElevatedButton(
+                              onPressed: () {},
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  Container(
+                                      padding:
+                                          EdgeInsets.symmetric(horizontal: 8),
+                                      child: Container(
+                                          padding: EdgeInsets.symmetric(
+                                              horizontal: 8),
+                                          child: Icon(Icons.picture_as_pdf))),
+                                  Text(buttonText)
+                                ],
+                              )),
+                        ),
+                      );
+                    }).toList(),
+                  ),
+                );
+              } else if (snapshot.hasError)
+                return Text('Error: ${snapshot.error}');
+              else
+                return CircularProgressIndicator();
+            }),
       ),
     );
   }
@@ -52,5 +88,17 @@ class _viewRegistersState extends State<viewRegisters> {
   Future<List<int>> _readImageData(String name) async {
     final ByteData data = await rootBundle.load('images/$name');
     return data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
+  }
+
+  Future<List<Map<String, dynamic>>> getServerResponse() async {
+    var response = await BaseInfo()
+        .sendGetRequestWithBody(
+            'https://track.milac.com.mx/MilacServices/MilacNavigation/api/v1/automaticBinnacle/getBinRows',
+            globals.operador , globals.unidad)
+        .catchError((err) {
+          print(err);
+        });
+
+    return response;
   }
 }

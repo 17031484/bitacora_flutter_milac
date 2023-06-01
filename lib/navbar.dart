@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:quickalert/models/quickalert_type.dart';
 import 'package:test_app/b_insOcular/revision_interna.dart';
+import 'package:test_app/home.page.dart';
 import 'package:test_app/pdf/viewPDFHistory.dart';
 import 'package:test_app/pdf/viewRegisters.dart';
 import 'Alerts.dart';
-import 'b_insOcular/localStorage.dart';
+import 'DB/localStorage.dart';
 import 'global.dart' as globals;
 
 class NavBar extends StatefulWidget {
@@ -76,7 +77,15 @@ class _NavBarState extends State<NavBar> {
                 },
               )
             ],
-          )
+          ),
+          ListTile(
+                leading: Icon(Icons.home),
+                title: const Text('Inicio'),
+                onTap: () async {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => HomePage()));
+                },
+              )
         ],
       ),
     );

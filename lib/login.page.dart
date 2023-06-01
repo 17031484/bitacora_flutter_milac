@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:test_app/baseinfo.dart';
+import 'package:test_app/DB/baseinfo.dart';
 import 'package:test_app/home.page.dart';
 import 'global.dart' as globals;
 
@@ -151,11 +151,14 @@ class _LoginPageState extends State<LoginPage> {
           .get('/dataUserExactly/${_userTEC.text}')
           .catchError((err) {}); 
       var data = json.decode(response);
-      print(data);
       globals.unidad = data[0]['Unidad'];
       globals.operador = data[0]['Operador'];
       globals.ruta = data[0]['Ruta'];
       globals.no_viaje = (data[0]['viajeactual'] == 'N') ? 'SIN VIAJE' : data[0]['no_viaje'];
+
+      if(globals.no_viaje != 'SIN VIAJE'){
+        await BaseInfo().insertarDatos(globals.operador, globals.unidad, globals.no_viaje, globals.dateString);
+      }
 
       //debugPrint(data[0]['ruta']);
       Navigator.of(context)

@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:test_app/navbar.dart';
-import '../b_insOcular/localStorage.dart';
+import '../DB/localStorage.dart';
 import 'package:syncfusion_flutter_pdf/pdf.dart' as syncfusion_flutter_pdf;
 import 'PdfApi.dart';
 
@@ -130,8 +130,8 @@ class _viewPDFHistoryState extends State<viewPDFHistory> {
 
   void validateRecords(int noViaje) async {
     //hay que obtener el ultimo registro en caso de haberlo del viaje actual
-    var lastRecord = await storage.getTotalRecords(noViaje);
-    print(lastRecord);
+    //var lastRecord = await storage.getTotalRecords(noViaje);
+    //print(lastRecord);
 
     //List<Map<String, dynamic>> totalRecords =
     //    await storage.getTotalRecords(noViaje);
@@ -327,9 +327,9 @@ class _viewPDFHistoryState extends State<viewPDFHistory> {
       rowsRevisionIntern2.height = 5;
       for (int j = 1; j <= 31; j++) {
         if (j == day) {
-          rowsRevisionIntern2.cells[j].value = dataList[0]['0'] == 'Buen estado'
+          rowsRevisionIntern2.cells[j].value = dataList[1]['1'] == 'Buen estado'
               ? '/'
-              : dataList[0]['0'] == 'No aplica'
+              : dataList[1]['1'] == 'No aplica'
                   ? 'n/a'
                   : 'x';
         }
@@ -368,9 +368,9 @@ class _viewPDFHistoryState extends State<viewPDFHistory> {
       rowsRevisionIntern3.height = 5;
       for (int j = 1; j <= 31; j++) {
         if (j == day) {
-          rowsRevisionIntern3.cells[j].value = dataList[0]['0'] == 'Buen estado'
+          rowsRevisionIntern3.cells[j].value = dataList[2]['2'] == 'Buen estado'
               ? '/'
-              : dataList[0]['0'] == 'No aplica'
+              : dataList[2]['2'] == 'No aplica'
                   ? 'n/a'
                   : 'x';
         }
@@ -433,9 +433,9 @@ class _viewPDFHistoryState extends State<viewPDFHistory> {
       rowsRevisionIntern4.height = 5;
       for (int j = 1; j <= 31; j++) {
         if (j == day) {
-          rowsRevisionIntern4.cells[j].value = dataList[0]['0'] == 'Buen estado'
+          rowsRevisionIntern4.cells[j].value = dataList[3]['3'] == 'Buen estado'
               ? '/'
-              : dataList[0]['0'] == 'No aplica'
+              : dataList[3]['3'] == 'No aplica'
                   ? 'n/a'
                   : 'x';
         }
@@ -498,9 +498,9 @@ class _viewPDFHistoryState extends State<viewPDFHistory> {
       for (int j = 1; j <= 31; j++) {
         if (j == day) {
           rowsRevisionInterna5.cells[j].value =
-              dataList[0]['0'] == 'Buen estado'
+              dataList[4]['4'] == 'Buen estado'
                   ? '/'
-                  : dataList[0]['0'] == 'No aplica'
+                  : dataList[4]['4'] == 'No aplica'
                       ? 'n/a'
                       : 'x';
         }
@@ -538,9 +538,9 @@ class _viewPDFHistoryState extends State<viewPDFHistory> {
       for (int j = 1; j <= 31; j++) {
         if (j == day) {
           rowsRevisionInterna6.cells[j].value =
-              dataList[0]['0'] == 'Buen estado'
+              dataList[5]['5'] == 'Buen estado'
                   ? '/'
-                  : dataList[0]['0'] == 'No aplica'
+                  : dataList[5]['5'] == 'No aplica'
                       ? 'n/a'
                       : 'x';
         }
@@ -578,9 +578,9 @@ class _viewPDFHistoryState extends State<viewPDFHistory> {
       for (int j = 1; j <= 31; j++) {
         if (j == day) {
           rowsRevisionInterna7.cells[j].value =
-              dataList[0]['0'] == 'Buen estado'
+              dataList[6]['6'] == 'Buen estado'
                   ? '/'
-                  : dataList[0]['0'] == 'No aplica'
+                  : dataList[6]['6'] == 'No aplica'
                       ? 'n/a'
                       : 'x';
         }
@@ -617,9 +617,9 @@ class _viewPDFHistoryState extends State<viewPDFHistory> {
       for (int j = 1; j <= 31; j++) {
         if (j == day) {
           rowsRevisionInterna8.cells[j].value =
-              dataList[0]['0'] == 'Buen estado'
+              dataList[7]['7'] == 'Buen estado'
                   ? '/'
-                  : dataList[0]['0'] == 'No aplica'
+                  : dataList[7]['7'] == 'No aplica'
                       ? 'n/a'
                       : 'x';
         }
@@ -657,9 +657,9 @@ class _viewPDFHistoryState extends State<viewPDFHistory> {
       for (int j = 1; j <= 31; j++) {
         if (j == day) {
           rowsRevisionInterna9.cells[j].value =
-              dataList[0]['0'] == 'Buen estado'
+              dataList[8]['8'] == 'Buen estado'
                   ? '/'
-                  : dataList[0]['0'] == 'No aplica'
+                  : dataList[8]['8'] == 'No aplica'
                       ? 'n/a'
                       : 'x';
         }
@@ -697,9 +697,9 @@ class _viewPDFHistoryState extends State<viewPDFHistory> {
       for (int j = 1; j <= 31; j++) {
         if (j == day) {
           rowsRevisionInterna10.cells[j].value =
-              dataList[0]['0'] == 'Buen estado'
+              dataList[9]['9'] == 'Buen estado'
                   ? '/'
-                  : dataList[0]['0'] == 'No aplica'
+                  : dataList[9]['9'] == 'No aplica'
                       ? 'n/a'
                       : 'x';
         }
@@ -737,9 +737,9 @@ class _viewPDFHistoryState extends State<viewPDFHistory> {
       for (int j = 1; j <= 31; j++) {
         if (j == day) {
           rowsRevisionIntern11.cells[j].value =
-              dataList[0]['0'] == 'Buen estado'
+              dataList[10]['10'] == 'Buen estado'
                   ? '/'
-                  : dataList[0]['0'] == 'No aplica'
+                  : dataList[10]['10'] == 'No aplica'
                       ? 'n/a'
                       : 'x';
         }
@@ -777,9 +777,9 @@ class _viewPDFHistoryState extends State<viewPDFHistory> {
       for (int j = 1; j <= 31; j++) {
         if (j == day) {
           rowsRevisionInterna12.cells[j].value =
-              dataList[0]['0'] == 'Buen estado'
+              dataList[11]['11'] == 'Buen estado'
                   ? '/'
-                  : dataList[0]['0'] == 'No aplica'
+                  : dataList[11]['11'] == 'No aplica'
                       ? 'n/a'
                       : 'x';
         }
@@ -817,9 +817,9 @@ class _viewPDFHistoryState extends State<viewPDFHistory> {
       for (int j = 1; j <= 31; j++) {
         if (j == day) {
           rowsRevisionInterna13.cells[j].value =
-              dataList[0]['0'] == 'Buen estado'
+              dataList[12]['12'] == 'Buen estado'
                   ? '/'
-                  : dataList[0]['0'] == 'No aplica'
+                  : dataList[12]['12'] == 'No aplica'
                       ? 'n/a'
                       : 'x';
         }
@@ -858,9 +858,9 @@ class _viewPDFHistoryState extends State<viewPDFHistory> {
       for (int j = 1; j <= 31; j++) {
         if (j == day) {
           rowsRevisionInterna14.cells[j].value =
-              dataList[0]['0'] == 'Buen estado'
+              dataList[13]['13'] == 'Buen estado'
                   ? '/'
-                  : dataList[0]['0'] == 'No aplica'
+                  : dataList[13]['13'] == 'No aplica'
                       ? 'n/a'
                       : 'x';
         }
@@ -899,9 +899,9 @@ class _viewPDFHistoryState extends State<viewPDFHistory> {
       for (int j = 1; j <= 31; j++) {
         if (j == day) {
           rowsRevisionInterna15.cells[j].value =
-              dataList[0]['0'] == 'Buen estado'
+              dataList[14]['14'] == 'Buen estado'
                   ? '/'
-                  : dataList[0]['0'] == 'No aplica'
+                  : dataList[14]['14'] == 'No aplica'
                       ? 'n/a'
                       : 'x';
         }
@@ -940,9 +940,9 @@ class _viewPDFHistoryState extends State<viewPDFHistory> {
       for (int j = 1; j <= 31; j++) {
         if (j == day) {
           rowsRevisionInterna16.cells[j].value =
-              dataList[0]['0'] == 'Buen estado'
+              dataList[15]['15'] == 'Buen estado'
                   ? '/'
-                  : dataList[0]['0'] == 'No aplica'
+                  : dataList[15]['15'] == 'No aplica'
                       ? 'n/a'
                       : 'x';
         }
@@ -980,9 +980,9 @@ class _viewPDFHistoryState extends State<viewPDFHistory> {
       for (int j = 1; j <= 31; j++) {
         if (j == day) {
           rowsRevisionInterna17.cells[j].value =
-              dataList[0]['0'] == 'Buen estado'
+              dataList[16]['16'] == 'Buen estado'
                   ? '/'
-                  : dataList[0]['0'] == 'No aplica'
+                  : dataList[16]['16'] == 'No aplica'
                       ? 'n/a'
                       : 'x';
         }
@@ -1020,9 +1020,9 @@ class _viewPDFHistoryState extends State<viewPDFHistory> {
       for (int j = 1; j <= 31; j++) {
         if (j == day) {
           rowsRevisionInterna18.cells[j].value =
-              dataList[0]['0'] == 'Buen estado'
+              dataList[17]['17'] == 'Buen estado'
                   ? '/'
-                  : dataList[0]['0'] == 'No aplica'
+                  : dataList[17]['17'] == 'No aplica'
                       ? 'n/a'
                       : 'x';
         }
@@ -1061,9 +1061,9 @@ class _viewPDFHistoryState extends State<viewPDFHistory> {
       for (int j = 1; j <= 31; j++) {
         if (j == day) {
           rowsRevisionInterna19.cells[j].value =
-              dataList[0]['0'] == 'Buen estado'
+              dataList[18]['18'] == 'Buen estado'
                   ? '/'
-                  : dataList[0]['0'] == 'No aplica'
+                  : dataList[18]['18'] == 'No aplica'
                       ? 'n/a'
                       : 'x';
         }
@@ -1101,9 +1101,9 @@ class _viewPDFHistoryState extends State<viewPDFHistory> {
       for (int j = 1; j <= 31; j++) {
         if (j == day) {
           rowsRevisionInterna20.cells[j].value =
-              dataList[0]['0'] == 'Buen estado'
+              dataList[19]['19'] == 'Buen estado'
                   ? '/'
-                  : dataList[0]['0'] == 'No aplica'
+                  : dataList[19]['19'] == 'No aplica'
                       ? 'n/a'
                       : 'x';
         }
@@ -1141,9 +1141,9 @@ class _viewPDFHistoryState extends State<viewPDFHistory> {
       for (int j = 1; j <= 31; j++) {
         if (j == day) {
           rowsRevisionInterna21.cells[j].value =
-              dataList[0]['0'] == 'Buen estado'
+              dataList[20]['20'] == 'Buen estado'
                   ? '/'
-                  : dataList[0]['0'] == 'No aplica'
+                  : dataList[20]['20'] == 'No aplica'
                       ? 'n/a'
                       : 'x';
         }
@@ -1194,11 +1194,12 @@ class _viewPDFHistoryState extends State<viewPDFHistory> {
       rowsFrenteExterior1.height = 5;
       for (int j = 1; j <= 31; j++) {
         if (j == day) {
-          rowsFrenteExterior1.cells[j].value = dataList[0]['0'] == 'Buen estado'
-              ? '/'
-              : dataList[0]['0'] == 'No aplica'
-                  ? 'n/a'
-                  : 'x';
+          rowsFrenteExterior1.cells[j].value =
+              dataList[21]['21'] == 'Buen estado'
+                  ? '/'
+                  : dataList[21]['21'] == 'No aplica'
+                      ? 'n/a'
+                      : 'x';
         }
 
         rowsFrenteExterior1.cells[j].stringFormat =
@@ -1233,11 +1234,12 @@ class _viewPDFHistoryState extends State<viewPDFHistory> {
       rowsFrenteExterior2.height = 5;
       for (int j = 1; j <= 31; j++) {
         if (j == day) {
-          rowsFrenteExterior2.cells[j].value = dataList[0]['0'] == 'Buen estado'
-              ? '/'
-              : dataList[0]['0'] == 'No aplica'
-                  ? 'n/a'
-                  : 'x';
+          rowsFrenteExterior2.cells[j].value =
+              dataList[22]['22'] == 'Buen estado'
+                  ? '/'
+                  : dataList[22]['22'] == 'No aplica'
+                      ? 'n/a'
+                      : 'x';
         }
 
         rowsFrenteExterior2.cells[j].stringFormat =
@@ -1292,11 +1294,12 @@ class _viewPDFHistoryState extends State<viewPDFHistory> {
       rowsFrenteExterior3.height = 5;
       for (int j = 1; j <= 31; j++) {
         if (j == day) {
-          rowsFrenteExterior3.cells[j].value = dataList[0]['0'] == 'Buen estado'
-              ? '/'
-              : dataList[0]['0'] == 'No aplica'
-                  ? 'n/a'
-                  : 'x';
+          rowsFrenteExterior3.cells[j].value =
+              dataList[23]['23'] == 'Buen estado'
+                  ? '/'
+                  : dataList[23]['23'] == 'No aplica'
+                      ? 'n/a'
+                      : 'x';
         }
 
         rowsFrenteExterior3.cells[j].stringFormat =
@@ -1330,11 +1333,12 @@ class _viewPDFHistoryState extends State<viewPDFHistory> {
       rowsFrenteExterior4.height = 5;
       for (int j = 1; j <= 31; j++) {
         if (j == day) {
-          rowsFrenteExterior4.cells[j].value = dataList[0]['0'] == 'Buen estado'
-              ? '/'
-              : dataList[0]['0'] == 'No aplica'
-                  ? 'n/a'
-                  : 'x';
+          rowsFrenteExterior4.cells[j].value =
+              dataList[24]['24'] == 'Buen estado'
+                  ? '/'
+                  : dataList[24]['24'] == 'No aplica'
+                      ? 'n/a'
+                      : 'x';
         }
 
         rowsFrenteExterior4.cells[j].stringFormat =
@@ -1368,11 +1372,12 @@ class _viewPDFHistoryState extends State<viewPDFHistory> {
       rowsFrenteExterior5.height = 5;
       for (int j = 1; j <= 31; j++) {
         if (j == day) {
-          rowsFrenteExterior5.cells[j].value = dataList[0]['0'] == 'Buen estado'
-              ? '/'
-              : dataList[0]['0'] == 'No aplica'
-                  ? 'n/a'
-                  : 'x';
+          rowsFrenteExterior5.cells[j].value =
+              dataList[25]['25'] == 'Buen estado'
+                  ? '/'
+                  : dataList[25]['25'] == 'No aplica'
+                      ? 'n/a'
+                      : 'x';
         }
 
         rowsFrenteExterior5.cells[j].stringFormat =
@@ -1406,11 +1411,12 @@ class _viewPDFHistoryState extends State<viewPDFHistory> {
       rowsFrenteExterior6.height = 5;
       for (int j = 1; j <= 31; j++) {
         if (j == day) {
-          rowsFrenteExterior6.cells[j].value = dataList[0]['0'] == 'Buen estado'
-              ? '/'
-              : dataList[0]['0'] == 'No aplica'
-                  ? 'n/a'
-                  : 'x';
+          rowsFrenteExterior6.cells[j].value =
+              dataList[26]['26'] == 'Buen estado'
+                  ? '/'
+                  : dataList[26]['26'] == 'No aplica'
+                      ? 'n/a'
+                      : 'x';
         }
 
         rowsFrenteExterior6.cells[j].stringFormat =
@@ -1445,11 +1451,12 @@ class _viewPDFHistoryState extends State<viewPDFHistory> {
       rowsFrenteExterior7.height = 5;
       for (int j = 1; j <= 31; j++) {
         if (j == day) {
-          rowsFrenteExterior7.cells[j].value = dataList[0]['0'] == 'Buen estado'
-              ? '/'
-              : dataList[0]['0'] == 'No aplica'
-                  ? 'n/a'
-                  : 'x';
+          rowsFrenteExterior7.cells[j].value =
+              dataList[27]['27'] == 'Buen estado'
+                  ? '/'
+                  : dataList[27]['27'] == 'No aplica'
+                      ? 'n/a'
+                      : 'x';
         }
 
         rowsFrenteExterior7.cells[j].stringFormat =
@@ -1483,11 +1490,12 @@ class _viewPDFHistoryState extends State<viewPDFHistory> {
       rowsFrenteExterior8.height = 5;
       for (int j = 1; j <= 31; j++) {
         if (j == day) {
-          rowsFrenteExterior8.cells[j].value = dataList[0]['0'] == 'Buen estado'
-              ? '/'
-              : dataList[0]['0'] == 'No aplica'
-                  ? 'n/a'
-                  : 'x';
+          rowsFrenteExterior8.cells[j].value =
+              dataList[28]['28'] == 'Buen estado'
+                  ? '/'
+                  : dataList[28]['28'] == 'No aplica'
+                      ? 'n/a'
+                      : 'x';
         }
 
         rowsFrenteExterior8.cells[j].stringFormat =
@@ -1521,11 +1529,12 @@ class _viewPDFHistoryState extends State<viewPDFHistory> {
       rowsFrenteExterior9.height = 5;
       for (int j = 1; j <= 31; j++) {
         if (j == day) {
-          rowsFrenteExterior9.cells[j].value = dataList[0]['0'] == 'Buen estado'
-              ? '/'
-              : dataList[0]['0'] == 'No aplica'
-                  ? 'n/a'
-                  : 'x';
+          rowsFrenteExterior9.cells[j].value =
+              dataList[29]['29'] == 'Buen estado'
+                  ? '/'
+                  : dataList[29]['29'] == 'No aplica'
+                      ? 'n/a'
+                      : 'x';
         }
 
         rowsFrenteExterior9.cells[j].stringFormat =
@@ -1560,9 +1569,9 @@ class _viewPDFHistoryState extends State<viewPDFHistory> {
       for (int j = 1; j <= 31; j++) {
         if (j == day) {
           rowsFrenteExterior10.cells[j].value =
-              dataList[0]['0'] == 'Buen estado'
+              dataList[30]['30'] == 'Buen estado'
                   ? '/'
-                  : dataList[0]['0'] == 'No aplica'
+                  : dataList[30]['30'] == 'No aplica'
                       ? 'n/a'
                       : 'x';
         }
@@ -1613,9 +1622,9 @@ class _viewPDFHistoryState extends State<viewPDFHistory> {
       for (int j = 1; j <= 31; j++) {
         if (j == day) {
           rowsFrenteExterior11.cells[j].value =
-              dataList[0]['0'] == 'Buen estado'
+              dataList[31]['31'] == 'Buen estado'
                   ? '/'
-                  : dataList[0]['0'] == 'No aplica'
+                  : dataList[31]['31'] == 'No aplica'
                       ? 'n/a'
                       : 'x';
         }
@@ -1653,9 +1662,9 @@ class _viewPDFHistoryState extends State<viewPDFHistory> {
       for (int j = 1; j <= 31; j++) {
         if (j == day) {
           rowsFrenteExterior12.cells[j].value =
-              dataList[0]['0'] == 'Buen estado'
+              dataList[32]['32'] == 'Buen estado'
                   ? '/'
-                  : dataList[0]['0'] == 'No aplica'
+                  : dataList[32]['32'] == 'No aplica'
                       ? 'n/a'
                       : 'x';
         }
@@ -1692,9 +1701,9 @@ class _viewPDFHistoryState extends State<viewPDFHistory> {
       for (int j = 1; j <= 31; j++) {
         if (j == day) {
           rowsFrenteExterior13.cells[j].value =
-              dataList[0]['0'] == 'Buen estado'
+              dataList[33]['33'] == 'Buen estado'
                   ? '/'
-                  : dataList[0]['0'] == 'No aplica'
+                  : dataList[33]['33'] == 'No aplica'
                       ? 'n/a'
                       : 'x';
         }
@@ -1731,9 +1740,9 @@ class _viewPDFHistoryState extends State<viewPDFHistory> {
       for (int j = 1; j <= 31; j++) {
         if (j == day) {
           rowsFrenteExterior14.cells[j].value =
-              dataList[0]['0'] == 'Buen estado'
+              dataList[34]['34'] == 'Buen estado'
                   ? '/'
-                  : dataList[0]['0'] == 'No aplica'
+                  : dataList[34]['34'] == 'No aplica'
                       ? 'n/a'
                       : 'x';
         }
@@ -1770,9 +1779,9 @@ class _viewPDFHistoryState extends State<viewPDFHistory> {
       for (int j = 1; j <= 31; j++) {
         if (j == day) {
           rowsFrenteExterior15.cells[j].value =
-              dataList[0]['0'] == 'Buen estado'
+              dataList[35]['35'] == 'Buen estado'
                   ? '/'
-                  : dataList[0]['0'] == 'No aplica'
+                  : dataList[35]['35'] == 'No aplica'
                       ? 'n/a'
                       : 'x';
         }
@@ -1809,9 +1818,9 @@ class _viewPDFHistoryState extends State<viewPDFHistory> {
       for (int j = 1; j <= 31; j++) {
         if (j == day) {
           rowsFrenteExterior16.cells[j].value =
-              dataList[0]['0'] == 'Buen estado'
+              dataList[36]['36'] == 'Buen estado'
                   ? '/'
-                  : dataList[0]['0'] == 'No aplica'
+                  : dataList[36]['36'] == 'No aplica'
                       ? 'n/a'
                       : 'x';
         }
@@ -1848,9 +1857,9 @@ class _viewPDFHistoryState extends State<viewPDFHistory> {
       for (int j = 1; j <= 31; j++) {
         if (j == day) {
           rowsFrenteExterior17.cells[j].value =
-              dataList[0]['0'] == 'Buen estado'
+              dataList[37]['37'] == 'Buen estado'
                   ? '/'
-                  : dataList[0]['0'] == 'No aplica'
+                  : dataList[37]['37'] == 'No aplica'
                       ? 'n/a'
                       : 'x';
         }
@@ -1887,9 +1896,9 @@ class _viewPDFHistoryState extends State<viewPDFHistory> {
       for (int j = 1; j <= 31; j++) {
         if (j == day) {
           rowsFrenteExterior18.cells[j].value =
-              dataList[0]['0'] == 'Buen estado'
+              dataList[38]['38'] == 'Buen estado'
                   ? '/'
-                  : dataList[0]['0'] == 'No aplica'
+                  : dataList[38]['38'] == 'No aplica'
                       ? 'n/a'
                       : 'x';
         }
@@ -1927,9 +1936,9 @@ class _viewPDFHistoryState extends State<viewPDFHistory> {
       for (int j = 1; j <= 31; j++) {
         if (j == day) {
           rowsFrenteExterior19.cells[j].value =
-              dataList[0]['0'] == 'Buen estado'
+              dataList[39]['39'] == 'Buen estado'
                   ? '/'
-                  : dataList[0]['0'] == 'No aplica'
+                  : dataList[39]['39'] == 'No aplica'
                       ? 'n/a'
                       : 'x';
         }
@@ -1966,9 +1975,9 @@ class _viewPDFHistoryState extends State<viewPDFHistory> {
       for (int j = 1; j <= 31; j++) {
         if (j == day) {
           rowsFrenteExterior20.cells[j].value =
-              dataList[0]['0'] == 'Buen estado'
+              dataList[40]['40'] == 'Buen estado'
                   ? '/'
-                  : dataList[0]['0'] == 'No aplica'
+                  : dataList[40]['40'] == 'No aplica'
                       ? 'n/a'
                       : 'x';
         }
@@ -2017,9 +2026,9 @@ class _viewPDFHistoryState extends State<viewPDFHistory> {
       rowsAutotanque1.height = 5;
       for (int j = 1; j <= 31; j++) {
         if (j == day) {
-          rowsAutotanque1.cells[j].value = dataList[0]['0'] == 'Buen estado'
+          rowsAutotanque1.cells[j].value = dataList[41]['41'] == 'Buen estado'
               ? '/'
-              : dataList[0]['0'] == 'No aplica'
+              : dataList[41]['41'] == 'No aplica'
                   ? 'n/a'
                   : 'x';
         }
@@ -2055,9 +2064,9 @@ class _viewPDFHistoryState extends State<viewPDFHistory> {
       rowsAutotanque2.height = 5;
       for (int j = 1; j <= 31; j++) {
         if (j == day) {
-          rowsAutotanque2.cells[j].value = dataList[0]['0'] == 'Buen estado'
+          rowsAutotanque2.cells[j].value = dataList[42]['42'] == 'Buen estado'
               ? '/'
-              : dataList[0]['0'] == 'No aplica'
+              : dataList[42]['42'] == 'No aplica'
                   ? 'n/a'
                   : 'x';
         }
@@ -2093,9 +2102,9 @@ class _viewPDFHistoryState extends State<viewPDFHistory> {
       rowsAutotanque3.height = 5;
       for (int j = 1; j <= 31; j++) {
         if (j == day) {
-          rowsAutotanque3.cells[j].value = dataList[0]['0'] == 'Buen estado'
+          rowsAutotanque3.cells[j].value = dataList[43]['43'] == 'Buen estado'
               ? '/'
-              : dataList[0]['0'] == 'No aplica'
+              : dataList[43]['43'] == 'No aplica'
                   ? 'n/a'
                   : 'x';
         }
@@ -2131,9 +2140,9 @@ class _viewPDFHistoryState extends State<viewPDFHistory> {
       rowsAutotanque4.height = 5;
       for (int j = 1; j <= 31; j++) {
         if (j == day) {
-          rowsAutotanque4.cells[j].value = dataList[0]['0'] == 'Buen estado'
+          rowsAutotanque4.cells[j].value = dataList[44]['44'] == 'Buen estado'
               ? '/'
-              : dataList[0]['0'] == 'No aplica'
+              : dataList[44]['44'] == 'No aplica'
                   ? 'n/a'
                   : 'x';
         }
@@ -2169,9 +2178,9 @@ class _viewPDFHistoryState extends State<viewPDFHistory> {
       rowsAutotanque5.height = 5;
       for (int j = 1; j <= 31; j++) {
         if (j == day) {
-          rowsAutotanque5.cells[j].value = dataList[0]['0'] == 'Buen estado'
+          rowsAutotanque5.cells[j].value = dataList[45]['45'] == 'Buen estado'
               ? '/'
-              : dataList[0]['0'] == 'No aplica'
+              : dataList[45]['45'] == 'No aplica'
                   ? 'n/a'
                   : 'x';
         }
@@ -2207,9 +2216,9 @@ class _viewPDFHistoryState extends State<viewPDFHistory> {
       rowsAutotanque6.height = 5;
       for (int j = 1; j <= 31; j++) {
         if (j == day) {
-          rowsAutotanque6.cells[j].value = dataList[0]['0'] == 'Buen estado'
+          rowsAutotanque6.cells[j].value = dataList[46]['46'] == 'Buen estado'
               ? '/'
-              : dataList[0]['0'] == 'No aplica'
+              : dataList[46]['46'] == 'No aplica'
                   ? 'n/a'
                   : 'x';
         }
@@ -2245,9 +2254,9 @@ class _viewPDFHistoryState extends State<viewPDFHistory> {
       rowsAutotanque7.height = 5;
       for (int j = 1; j <= 31; j++) {
         if (j == day) {
-          rowsAutotanque7.cells[j].value = dataList[0]['0'] == 'Buen estado'
+          rowsAutotanque7.cells[j].value = dataList[47]['47'] == 'Buen estado'
               ? '/'
-              : dataList[0]['0'] == 'No aplica'
+              : dataList[47]['47'] == 'No aplica'
                   ? 'n/a'
                   : 'x';
         }
@@ -2284,9 +2293,9 @@ class _viewPDFHistoryState extends State<viewPDFHistory> {
       rowsAutotanque8.height = 5;
       for (int j = 1; j <= 31; j++) {
         if (j == day) {
-          rowsAutotanque8.cells[j].value = dataList[0]['0'] == 'Buen estado'
+          rowsAutotanque8.cells[j].value = dataList[48]['48'] == 'Buen estado'
               ? '/'
-              : dataList[0]['0'] == 'No aplica'
+              : dataList[48]['48'] == 'No aplica'
                   ? 'n/a'
                   : 'x';
         }
@@ -2322,9 +2331,9 @@ class _viewPDFHistoryState extends State<viewPDFHistory> {
       rowsAutotanque9.height = 5;
       for (int j = 1; j <= 31; j++) {
         if (j == day) {
-          rowsAutotanque9.cells[j].value = dataList[0]['0'] == 'Buen estado'
+          rowsAutotanque9.cells[j].value = dataList[49]['49'] == 'Buen estado'
               ? '/'
-              : dataList[0]['0'] == 'No aplica'
+              : dataList[49]['49'] == 'No aplica'
                   ? 'n/a'
                   : 'x';
         }
@@ -2360,9 +2369,9 @@ class _viewPDFHistoryState extends State<viewPDFHistory> {
       rowsAutotanque10.height = 5;
       for (int j = 1; j <= 31; j++) {
         if (j == day) {
-          rowsAutotanque10.cells[j].value = dataList[0]['0'] == 'Buen estado'
+          rowsAutotanque10.cells[j].value = dataList[50]['50'] == 'Buen estado'
               ? '/'
-              : dataList[0]['0'] == 'No aplica'
+              : dataList[50]['50'] == 'No aplica'
                   ? 'n/a'
                   : 'x';
         }
@@ -2398,9 +2407,9 @@ class _viewPDFHistoryState extends State<viewPDFHistory> {
       rowsAutotanque11.height = 5;
       for (int j = 1; j <= 31; j++) {
         if (j == day) {
-          rowsAutotanque11.cells[j].value = dataList[0]['0'] == 'Buen estado'
+          rowsAutotanque11.cells[j].value = dataList[51]['51'] == 'Buen estado'
               ? '/'
-              : dataList[0]['0'] == 'No aplica'
+              : dataList[51]['51'] == 'No aplica'
                   ? 'n/a'
                   : 'x';
         }
@@ -2436,9 +2445,9 @@ class _viewPDFHistoryState extends State<viewPDFHistory> {
       rowsAutotanque12.height = 5;
       for (int j = 1; j <= 31; j++) {
         if (j == day) {
-          rowsAutotanque12.cells[j].value = dataList[0]['0'] == 'Buen estado'
+          rowsAutotanque12.cells[j].value = dataList[52]['52'] == 'Buen estado'
               ? '/'
-              : dataList[0]['0'] == 'No aplica'
+              : dataList[52]['52'] == 'No aplica'
                   ? 'n/a'
                   : 'x';
         }
@@ -2471,6 +2480,7 @@ class _viewPDFHistoryState extends State<viewPDFHistory> {
       rowsInterior.cells[0].value = 'REVISION INTERIOR';
       autotanque.columns[0].width = 110;
       rowsInterior.height = 10;
+      rowsInterior.cells[0].style = subHeaderStyle;
       interior.draw(
         page: page,
         bounds: const Rect.fromLTWH(0, 375, 0, 0),
@@ -2486,9 +2496,9 @@ class _viewPDFHistoryState extends State<viewPDFHistory> {
       rowsInterior1.height = 5;
       for (int j = 1; j <= 31; j++) {
         if (j == day) {
-          rowsInterior1.cells[j].value = dataList[0]['0'] == 'Buen estado'
+          rowsInterior1.cells[j].value = dataList[53]['53'] == 'Buen estado'
               ? '/'
-              : dataList[0]['0'] == 'No aplica'
+              : dataList[53]['53'] == 'No aplica'
                   ? 'n/a'
                   : 'x';
         }
@@ -2524,9 +2534,9 @@ class _viewPDFHistoryState extends State<viewPDFHistory> {
       rowsInterior2.height = 5;
       for (int j = 1; j <= 31; j++) {
         if (j == day) {
-          rowsInterior2.cells[j].value = dataList[0]['0'] == 'Buen estado'
+          rowsInterior2.cells[j].value = dataList[54]['54'] == 'Buen estado'
               ? '/'
-              : dataList[0]['0'] == 'No aplica'
+              : dataList[54]['54'] == 'No aplica'
                   ? 'n/a'
                   : 'x';
         }
@@ -2561,9 +2571,9 @@ class _viewPDFHistoryState extends State<viewPDFHistory> {
       rowsInterior3.height = 5;
       for (int j = 1; j <= 31; j++) {
         if (j == day) {
-          rowsInterior3.cells[j].value = dataList[0]['0'] == 'Buen estado'
+          rowsInterior3.cells[j].value = dataList[55]['55'] == 'Buen estado'
               ? '/'
-              : dataList[0]['0'] == 'No aplica'
+              : dataList[55]['55'] == 'No aplica'
                   ? 'n/a'
                   : 'x';
         }
@@ -2598,9 +2608,9 @@ class _viewPDFHistoryState extends State<viewPDFHistory> {
       rowsInterior4.height = 5;
       for (int j = 1; j <= 31; j++) {
         if (j == day) {
-          rowsInterior4.cells[j].value = dataList[0]['0'] == 'Buen estado'
+          rowsInterior4.cells[j].value = dataList[56]['56'] == 'Buen estado'
               ? '/'
-              : dataList[0]['0'] == 'No aplica'
+              : dataList[56]['56'] == 'No aplica'
                   ? 'n/a'
                   : 'x';
         }
@@ -2635,9 +2645,9 @@ class _viewPDFHistoryState extends State<viewPDFHistory> {
       rowsInterior5.height = 5;
       for (int j = 1; j <= 31; j++) {
         if (j == day) {
-          rowsInterior5.cells[j].value = dataList[0]['0'] == 'Buen estado'
+          rowsInterior5.cells[j].value = dataList[57]['57'] == 'Buen estado'
               ? '/'
-              : dataList[0]['0'] == 'No aplica'
+              : dataList[57]['57'] == 'No aplica'
                   ? 'n/a'
                   : 'x';
         }
@@ -2672,9 +2682,9 @@ class _viewPDFHistoryState extends State<viewPDFHistory> {
       rowsInterior6.height = 5;
       for (int j = 1; j <= 31; j++) {
         if (j == day) {
-          rowsInterior6.cells[j].value = dataList[0]['0'] == 'Buen estado'
+          rowsInterior6.cells[j].value = dataList[58]['58'] == 'Buen estado'
               ? '/'
-              : dataList[0]['0'] == 'No aplica'
+              : dataList[58]['58'] == 'No aplica'
                   ? 'n/a'
                   : 'x';
         }
@@ -2709,9 +2719,9 @@ class _viewPDFHistoryState extends State<viewPDFHistory> {
       rowsInterior7.height = 5;
       for (int j = 1; j <= 31; j++) {
         if (j == day) {
-          rowsInterior7.cells[j].value = dataList[0]['0'] == 'Buen estado'
+          rowsInterior7.cells[j].value = dataList[59]['59'] == 'Buen estado'
               ? '/'
-              : dataList[0]['0'] == 'No aplica'
+              : dataList[59]['59'] == 'No aplica'
                   ? 'n/a'
                   : 'x';
         }
@@ -2763,9 +2773,9 @@ class _viewPDFHistoryState extends State<viewPDFHistory> {
       for (int j = 1; j <= 31; j++) {
         if (j == day) {
           rowsCombustionInterna1.cells[j].value =
-              dataList[0]['0'] == 'Buen estado'
+              dataList[60]['60'] == 'Buen estado'
                   ? '/'
-                  : dataList[0]['0'] == 'No aplica'
+                  : dataList[60]['60'] == 'No aplica'
                       ? 'n/a'
                       : 'x';
         }
@@ -2802,9 +2812,9 @@ class _viewPDFHistoryState extends State<viewPDFHistory> {
       for (int j = 1; j <= 31; j++) {
         if (j == day) {
           rowsCombustionInterna2.cells[j].value =
-              dataList[0]['0'] == 'Buen estado'
+              dataList[61]['61'] == 'Buen estado'
                   ? '/'
-                  : dataList[0]['0'] == 'No aplica'
+                  : dataList[61]['61'] == 'No aplica'
                       ? 'n/a'
                       : 'x';
         }
@@ -2841,9 +2851,9 @@ class _viewPDFHistoryState extends State<viewPDFHistory> {
       for (int j = 1; j <= 31; j++) {
         if (j == day) {
           rowsCombustionInterna3.cells[j].value =
-              dataList[0]['0'] == 'Buen estado'
+              dataList[62]['62'] == 'Buen estado'
                   ? '/'
-                  : dataList[0]['0'] == 'No aplica'
+                  : dataList[62]['62'] == 'No aplica'
                       ? 'n/a'
                       : 'x';
         }
@@ -2880,9 +2890,9 @@ class _viewPDFHistoryState extends State<viewPDFHistory> {
       for (int j = 1; j <= 31; j++) {
         if (j == day) {
           rowsCombustionInterna4.cells[j].value =
-              dataList[0]['0'] == 'Buen estado'
+              dataList[63]['63'] == 'Buen estado'
                   ? '/'
-                  : dataList[0]['0'] == 'No aplica'
+                  : dataList[63]['63'] == 'No aplica'
                       ? 'n/a'
                       : 'x';
         }
@@ -2932,9 +2942,9 @@ class _viewPDFHistoryState extends State<viewPDFHistory> {
       rowsEmergencia1.height = 5;
       for (int j = 1; j <= 31; j++) {
         if (j == day) {
-          rowsEmergencia1.cells[j].value = dataList[0]['0'] == 'Buen estado'
+          rowsEmergencia1.cells[j].value = dataList[64]['64'] == 'Buen estado'
               ? '/'
-              : dataList[0]['0'] == 'No aplica'
+              : dataList[64]['64'] == 'No aplica'
                   ? 'n/a'
                   : 'x';
         }
@@ -2970,9 +2980,9 @@ class _viewPDFHistoryState extends State<viewPDFHistory> {
       rowsEmergencia2.height = 5;
       for (int j = 1; j <= 31; j++) {
         if (j == day) {
-          rowsEmergencia2.cells[j].value = dataList[0]['0'] == 'Buen estado'
+          rowsEmergencia2.cells[j].value = dataList[65]['65'] == 'Buen estado'
               ? '/'
-              : dataList[0]['0'] == 'No aplica'
+              : dataList[65]['65'] == 'No aplica'
                   ? 'n/a'
                   : 'x';
         }
@@ -3009,9 +3019,9 @@ class _viewPDFHistoryState extends State<viewPDFHistory> {
       rowsEmergencia3.height = 15;
       for (int j = 1; j <= 31; j++) {
         if (j == day) {
-          rowsEmergencia3.cells[j].value = dataList[0]['0'] == 'Buen estado'
+          rowsEmergencia3.cells[j].value = dataList[66]['66'] == 'Buen estado'
               ? '/'
-              : dataList[0]['0'] == 'No aplica'
+              : dataList[66]['66'] == 'No aplica'
                   ? 'n/a'
                   : 'x';
         }
@@ -3047,9 +3057,9 @@ class _viewPDFHistoryState extends State<viewPDFHistory> {
       rowsEmergencia4.height = 5;
       for (int j = 1; j <= 31; j++) {
         if (j == day) {
-          rowsEmergencia4.cells[j].value = dataList[0]['0'] == 'Buen estado'
+          rowsEmergencia4.cells[j].value = dataList[67]['67'] == 'Buen estado'
               ? '/'
-              : dataList[0]['0'] == 'No aplica'
+              : dataList[67]['67'] == 'No aplica'
                   ? 'n/a'
                   : 'x';
         }
@@ -3085,9 +3095,9 @@ class _viewPDFHistoryState extends State<viewPDFHistory> {
       rowsEmergencia5.height = 5;
       for (int j = 1; j <= 31; j++) {
         if (j == day) {
-          rowsEmergencia5.cells[j].value = dataList[0]['0'] == 'Buen estado'
+          rowsEmergencia5.cells[j].value = dataList[68]['68'] == 'Buen estado'
               ? '/'
-              : dataList[0]['0'] == 'No aplica'
+              : dataList[68]['68'] == 'No aplica'
                   ? 'n/a'
                   : 'x';
         }
@@ -3160,9 +3170,9 @@ class _viewPDFHistoryState extends State<viewPDFHistory> {
       rowsPosterior1.height = 5;
       for (int j = 1; j <= 31; j++) {
         if (j == day) {
-          rowsPosterior1.cells[j].value = dataList[0]['0'] == 'Buen estado'
+          rowsPosterior1.cells[j].value = dataList[69]['69'] == 'Buen estado'
               ? '/'
-              : dataList[0]['0'] == 'No aplica'
+              : dataList[69]['69'] == 'No aplica'
                   ? 'n/a'
                   : 'x';
         }
@@ -3197,9 +3207,9 @@ class _viewPDFHistoryState extends State<viewPDFHistory> {
       rowsPosterior2.height = 5;
       for (int j = 1; j <= 31; j++) {
         if (j == day) {
-          rowsPosterior2.cells[j].value = dataList[0]['0'] == 'Buen estado'
+          rowsPosterior2.cells[j].value = dataList[70]['70'] == 'Buen estado'
               ? '/'
-              : dataList[0]['0'] == 'No aplica'
+              : dataList[70]['70'] == 'No aplica'
                   ? 'n/a'
                   : 'x';
         }
@@ -3234,9 +3244,9 @@ class _viewPDFHistoryState extends State<viewPDFHistory> {
       rowsPosterior3.height = 5;
       for (int j = 1; j <= 31; j++) {
         if (j == day) {
-          rowsPosterior3.cells[j].value = dataList[0]['0'] == 'Buen estado'
+          rowsPosterior3.cells[j].value = dataList[71]['71'] == 'Buen estado'
               ? '/'
-              : dataList[0]['0'] == 'No aplica'
+              : dataList[71]['71'] == 'No aplica'
                   ? 'n/a'
                   : 'x';
         }
@@ -3271,9 +3281,9 @@ class _viewPDFHistoryState extends State<viewPDFHistory> {
       rowsPosterior4.height = 5;
       for (int j = 1; j <= 31; j++) {
         if (j == day) {
-          rowsPosterior4.cells[j].value = dataList[0]['0'] == 'Buen estado'
+          rowsPosterior4.cells[j].value = dataList[72]['72'] == 'Buen estado'
               ? '/'
-              : dataList[0]['0'] == 'No aplica'
+              : dataList[72]['72'] == 'No aplica'
                   ? 'n/a'
                   : 'x';
         }
@@ -3308,9 +3318,9 @@ class _viewPDFHistoryState extends State<viewPDFHistory> {
       rowsPosterior5.height = 5;
       for (int j = 1; j <= 31; j++) {
         if (j == day) {
-          rowsPosterior5.cells[j].value = dataList[0]['0'] == 'Buen estado'
+          rowsPosterior5.cells[j].value = dataList[73]['73'] == 'Buen estado'
               ? '/'
-              : dataList[0]['0'] == 'No aplica'
+              : dataList[73]['73'] == 'No aplica'
                   ? 'n/a'
                   : 'x';
         }
@@ -3345,9 +3355,9 @@ class _viewPDFHistoryState extends State<viewPDFHistory> {
       rowsPosterior6.height = 5;
       for (int j = 1; j <= 31; j++) {
         if (j == day) {
-          rowsPosterior6.cells[j].value = dataList[0]['0'] == 'Buen estado'
+          rowsPosterior6.cells[j].value = dataList[74]['74'] == 'Buen estado'
               ? '/'
-              : dataList[0]['0'] == 'No aplica'
+              : dataList[74]['74'] == 'No aplica'
                   ? 'n/a'
                   : 'x';
         }
@@ -3382,9 +3392,9 @@ class _viewPDFHistoryState extends State<viewPDFHistory> {
       rowsPosterior7.height = 5;
       for (int j = 1; j <= 31; j++) {
         if (j == day) {
-          rowsPosterior7.cells[j].value = dataList[0]['0'] == 'Buen estado'
+          rowsPosterior7.cells[j].value = dataList[75]['75'] == 'Buen estado'
               ? '/'
-              : dataList[0]['0'] == 'No aplica'
+              : dataList[75]['75'] == 'No aplica'
                   ? 'n/a'
                   : 'x';
         }
@@ -3419,9 +3429,9 @@ class _viewPDFHistoryState extends State<viewPDFHistory> {
       rowsPosterior8.height = 5;
       for (int j = 1; j <= 31; j++) {
         if (j == day) {
-          rowsPosterior8.cells[j].value = dataList[0]['0'] == 'Buen estado'
+          rowsPosterior8.cells[j].value = dataList[76]['76'] == 'Buen estado'
               ? '/'
-              : dataList[0]['0'] == 'No aplica'
+              : dataList[76]['76'] == 'No aplica'
                   ? 'n/a'
                   : 'x';
         }
@@ -3456,9 +3466,9 @@ class _viewPDFHistoryState extends State<viewPDFHistory> {
       rowsPosterior9.height = 5;
       for (int j = 1; j <= 31; j++) {
         if (j == day) {
-          rowsPosterior9.cells[j].value = dataList[0]['0'] == 'Buen estado'
+          rowsPosterior9.cells[j].value = dataList[77]['77'] == 'Buen estado'
               ? '/'
-              : dataList[0]['0'] == 'No aplica'
+              : dataList[77]['77'] == 'No aplica'
                   ? 'n/a'
                   : 'x';
         }
@@ -3494,9 +3504,9 @@ class _viewPDFHistoryState extends State<viewPDFHistory> {
       rowsPosterior10.height = 5;
       for (int j = 1; j <= 31; j++) {
         if (j == day) {
-          rowsPosterior10.cells[j].value = dataList[0]['0'] == 'Buen estado'
+          rowsPosterior10.cells[j].value = dataList[78]['78'] == 'Buen estado'
               ? '/'
-              : dataList[0]['0'] == 'No aplica'
+              : dataList[78]['78'] == 'No aplica'
                   ? 'n/a'
                   : 'x';
         }
@@ -3532,9 +3542,9 @@ class _viewPDFHistoryState extends State<viewPDFHistory> {
       rowsPosterior11.height = 5;
       for (int j = 1; j <= 31; j++) {
         if (j == day) {
-          rowsPosterior11.cells[j].value = dataList[0]['0'] == 'Buen estado'
+          rowsPosterior11.cells[j].value = dataList[79]['79'] == 'Buen estado'
               ? '/'
-              : dataList[0]['0'] == 'No aplica'
+              : dataList[79]['79'] == 'No aplica'
                   ? 'n/a'
                   : 'x';
         }
@@ -3570,9 +3580,9 @@ class _viewPDFHistoryState extends State<viewPDFHistory> {
       rowsPosterior12.height = 5;
       for (int j = 1; j <= 31; j++) {
         if (j == day) {
-          rowsPosterior12.cells[j].value = dataList[0]['0'] == 'Buen estado'
+          rowsPosterior12.cells[j].value = dataList[80]['80'] == 'Buen estado'
               ? '/'
-              : dataList[0]['0'] == 'No aplica'
+              : dataList[80]['80'] == 'No aplica'
                   ? 'n/a'
                   : 'x';
         }
@@ -3621,9 +3631,9 @@ class _viewPDFHistoryState extends State<viewPDFHistory> {
       rowsRemolque1.height = 5;
       for (int j = 1; j <= 31; j++) {
         if (j == day) {
-          rowsRemolque1.cells[j].value = dataList[0]['0'] == 'Buen estado'
+          rowsRemolque1.cells[j].value = dataList[81]['81'] == 'Buen estado'
               ? '/'
-              : dataList[0]['0'] == 'No aplica'
+              : dataList[81]['81'] == 'No aplica'
                   ? 'n/a'
                   : 'x';
         }
@@ -3658,9 +3668,9 @@ class _viewPDFHistoryState extends State<viewPDFHistory> {
       rowsRemolque2.height = 5;
       for (int j = 1; j <= 31; j++) {
         if (j == day) {
-          rowsRemolque2.cells[j].value = dataList[0]['0'] == 'Buen estado'
+          rowsRemolque2.cells[j].value = dataList[82]['82'] == 'Buen estado'
               ? '/'
-              : dataList[0]['0'] == 'No aplica'
+              : dataList[82]['82'] == 'No aplica'
                   ? 'n/a'
                   : 'x';
         }
@@ -3695,9 +3705,9 @@ class _viewPDFHistoryState extends State<viewPDFHistory> {
       rowsRemolque3.height = 5;
       for (int j = 1; j <= 31; j++) {
         if (j == day) {
-          rowsRemolque3.cells[j].value = dataList[0]['0'] == 'Buen estado'
+          rowsRemolque3.cells[j].value = dataList[83]['83'] == 'Buen estado'
               ? '/'
-              : dataList[0]['0'] == 'No aplica'
+              : dataList[83]['83'] == 'No aplica'
                   ? 'n/a'
                   : 'x';
         }
@@ -3732,9 +3742,9 @@ class _viewPDFHistoryState extends State<viewPDFHistory> {
       rowsRemolque4.height = 5;
       for (int j = 1; j <= 31; j++) {
         if (j == day) {
-          rowsRemolque4.cells[j].value = dataList[0]['0'] == 'Buen estado'
+          rowsRemolque4.cells[j].value = dataList[84]['84'] == 'Buen estado'
               ? '/'
-              : dataList[0]['0'] == 'No aplica'
+              : dataList[84]['84'] == 'No aplica'
                   ? 'n/a'
                   : 'x';
         }
@@ -3769,9 +3779,9 @@ class _viewPDFHistoryState extends State<viewPDFHistory> {
       rowsRemolque5.height = 5;
       for (int j = 1; j <= 31; j++) {
         if (j == day) {
-          rowsRemolque5.cells[j].value = dataList[0]['0'] == 'Buen estado'
+          rowsRemolque5.cells[j].value = dataList[85]['85'] == 'Buen estado'
               ? '/'
-              : dataList[0]['0'] == 'No aplica'
+              : dataList[85]['85'] == 'No aplica'
                   ? 'n/a'
                   : 'x';
         }
@@ -3806,9 +3816,9 @@ class _viewPDFHistoryState extends State<viewPDFHistory> {
       rowsRemolque6.height = 5;
       for (int j = 1; j <= 31; j++) {
         if (j == day) {
-          rowsRemolque6.cells[j].value = dataList[0]['0'] == 'Buen estado'
+          rowsRemolque6.cells[j].value = dataList[86]['86'] == 'Buen estado'
               ? '/'
-              : dataList[0]['0'] == 'No aplica'
+              : dataList[86]['86'] == 'No aplica'
                   ? 'n/a'
                   : 'x';
         }
@@ -3843,9 +3853,9 @@ class _viewPDFHistoryState extends State<viewPDFHistory> {
       rowsRemolque7.height = 5;
       for (int j = 1; j <= 31; j++) {
         if (j == day) {
-          rowsRemolque7.cells[j].value = dataList[0]['0'] == 'Buen estado'
+          rowsRemolque7.cells[j].value = dataList[87]['87'] == 'Buen estado'
               ? '/'
-              : dataList[0]['0'] == 'No aplica'
+              : dataList[87]['87'] == 'No aplica'
                   ? 'n/a'
                   : 'x';
         }
@@ -3904,9 +3914,9 @@ class _viewPDFHistoryState extends State<viewPDFHistory> {
       rowsRemolque8.height = 5;
       for (int j = 1; j <= 31; j++) {
         if (j == day) {
-          rowsRemolque8.cells[j].value = dataList[0]['0'] == 'Buen estado'
+          rowsRemolque8.cells[j].value = dataList[88]['88'] == 'Buen estado'
               ? '/'
-              : dataList[0]['0'] == 'No aplica'
+              : dataList[88]['88'] == 'No aplica'
                   ? 'n/a'
                   : 'x';
         }
@@ -3941,9 +3951,9 @@ class _viewPDFHistoryState extends State<viewPDFHistory> {
       rowsRemolque9.height = 5;
       for (int j = 1; j <= 31; j++) {
         if (j == day) {
-          rowsRemolque9.cells[j].value = dataList[0]['0'] == 'Buen estado'
+          rowsRemolque9.cells[j].value = dataList[89]['89'] == 'Buen estado'
               ? '/'
-              : dataList[0]['0'] == 'No aplica'
+              : dataList[89]['89'] == 'No aplica'
                   ? 'n/a'
                   : 'x';
         }
@@ -3978,9 +3988,9 @@ class _viewPDFHistoryState extends State<viewPDFHistory> {
       rowsRemolque10.height = 5;
       for (int j = 1; j <= 31; j++) {
         if (j == day) {
-          rowsRemolque10.cells[j].value = dataList[0]['0'] == 'Buen estado'
+          rowsRemolque10.cells[j].value = dataList[90]['90'] == 'Buen estado'
               ? '/'
-              : dataList[0]['0'] == 'No aplica'
+              : dataList[90]['90'] == 'No aplica'
                   ? 'n/a'
                   : 'x';
         }
@@ -4015,9 +4025,9 @@ class _viewPDFHistoryState extends State<viewPDFHistory> {
       rowsRemolque11.height = 5;
       for (int j = 1; j <= 31; j++) {
         if (j == day) {
-          rowsRemolque11.cells[j].value = dataList[0]['0'] == 'Buen estado'
+          rowsRemolque11.cells[j].value = dataList[91]['91'] == 'Buen estado'
               ? '/'
-              : dataList[0]['0'] == 'No aplica'
+              : dataList[91]['91'] == 'No aplica'
                   ? 'n/a'
                   : 'x';
         }
@@ -4052,9 +4062,9 @@ class _viewPDFHistoryState extends State<viewPDFHistory> {
       rowsRemolque12.height = 5;
       for (int j = 1; j <= 31; j++) {
         if (j == day) {
-          rowsRemolque12.cells[j].value = dataList[0]['0'] == 'Buen estado'
+          rowsRemolque12.cells[j].value = dataList[92]['92'] == 'Buen estado'
               ? '/'
-              : dataList[0]['0'] == 'No aplica'
+              : dataList[92]['92'] == 'No aplica'
                   ? 'n/a'
                   : 'x';
         }
@@ -4089,9 +4099,9 @@ class _viewPDFHistoryState extends State<viewPDFHistory> {
       rowsRemolque13.height = 5;
       for (int j = 1; j <= 31; j++) {
         if (j == day) {
-          rowsRemolque13.cells[j].value = dataList[0]['0'] == 'Buen estado'
+          rowsRemolque13.cells[j].value = dataList[93]['93'] == 'Buen estado'
               ? '/'
-              : dataList[0]['0'] == 'No aplica'
+              : dataList[93]['93'] == 'No aplica'
                   ? 'n/a'
                   : 'x';
         }
@@ -4126,9 +4136,9 @@ class _viewPDFHistoryState extends State<viewPDFHistory> {
       rowsRemolque14.height = 5;
       for (int j = 1; j <= 31; j++) {
         if (j == day) {
-          rowsRemolque14.cells[j].value = dataList[0]['0'] == 'Buen estado'
+          rowsRemolque14.cells[j].value = dataList[94]['94'] == 'Buen estado'
               ? '/'
-              : dataList[0]['0'] == 'No aplica'
+              : dataList[94]['94'] == 'No aplica'
                   ? 'n/a'
                   : 'x';
         }
@@ -4163,9 +4173,9 @@ class _viewPDFHistoryState extends State<viewPDFHistory> {
       rowsRemolque15.height = 5;
       for (int j = 1; j <= 31; j++) {
         if (j == day) {
-          rowsRemolque15.cells[j].value = dataList[0]['0'] == 'Buen estado'
+          rowsRemolque15.cells[j].value = dataList[95]['95'] == 'Buen estado'
               ? '/'
-              : dataList[0]['0'] == 'No aplica'
+              : dataList[95]['95'] == 'No aplica'
                   ? 'n/a'
                   : 'x';
         }
